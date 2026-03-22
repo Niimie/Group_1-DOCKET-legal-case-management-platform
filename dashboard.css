@@ -4,11 +4,16 @@
     margin: 0;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 body {
     background: #0D1B2A;
     font-family: 'Inter', sans-serif;
 }
 
+/*--------------side-bar-----------------*/
 .wrapper {
     display: flex;
     width: 100%;
@@ -16,134 +21,138 @@ body {
     overflow: hidden;
 }
 
-/*-----------Side Bar------------*/
 .side-bar {
-    width: 220px;
+    width: 22rem;
     display: flex;
     flex-direction: column;
-    padding: 26px 0 16px;
+    padding: 2.6rem 0 1.6rem;
     overflow: hidden;
     flex-shrink: 0;
 }
 
 .firm-name {
-    padding: 8px 24px;
+    padding: 0.8rem 2.4rem;
     width: 100vw;
 }
- 
+
 .name {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 600;
     color: #ffffff;
     line-height: 1.5;
 }
 
-
+/*---------side-bar nav----------------*/
 .side-bar-nav {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
- 
+
 .main-menus {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 600;
-    letter-spacing: 1.1px;
+    letter-spacing: 0.11rem;
     color: #99C6FF;
     text-transform: uppercase;
-    padding: 10px 24px;
+    padding: 1rem 2.4rem;
 }
- 
+
 .nav-lists {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 0 30px;
+    gap: 1rem;
+    padding: 0 3rem;
 }
- 
-.lists {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 8px 12px;
-    border-radius: 7px;
-    cursor: pointer;
-    color: #99C6FF;
-}
-.lists i {
-    color: #99C6FF;
-}
-.nav-list-link {
-    text-decoration: none;
-    color: #99C6FF;
-}
+
 .nav-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 0.3rem;
     color: #C9A84C;
-    padding: 8px 12px;
+    padding: 0.8rem 1.2rem;
     width: 100%;
     cursor: pointer;
-    background: rgba(201, 168, 76, 0.15); 
-    border-radius: 7px;
+    background: rgba(201, 168, 76, 0.15);
+    border-radius: 0.7rem;
+}
 
-}
-.nav-text{
-    flex: 1; 
-    display: inline-block;
-}
 .nav-list i {
     color: #C9A84C;
-    font-size: 16px;
-    flex-shrink: 0; 
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
 
+.nav-text {
+    flex: 1;
+    display: inline-block;
+    font-size: 1.3rem;
+}
+
+.lists {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    color: #99C6FF;
+}
+
+.lists i {
+    color: #99C6FF;
+}
+
+.nav-list-link {
+    text-decoration: none;
+    color: #99C6FF;
+    font-size: 1.3rem;
 }
 
 .rbadge {
     background: #e74c3c;
     color: #fff;
-    font-size: 9px;
+    font-size: 0.9rem;
     font-weight: 700;
-    width: 17px;
-    height: 17px;
+    width: 1.7rem;
+    height: 1.7rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    gap: 10px;
+    gap: 1rem;
 }
-.admins, 
-.accounts{
-    font-size: 16px;
+
+/*----------Admin & Account-------------*/
+.admins,
+.accounts {
+    font-size: 1.6rem;
     font-weight: 600;
-    letter-spacing: 1.1px;
+    letter-spacing: 0.11rem;
     color: #99C6FF;
-    padding: 10px 24px;
-    margin-top: 16px;
-
+    padding: 1rem 2.4rem;
+    margin-top: 1.6rem;
 }
 
-.admin-links, 
-.acct-links{
+.admin-links,
+.acct-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    padding: 0 10px;
-    margin-top: 8px;
-
-
+    gap: 0.2rem;
+    padding: 0 1rem;
+    margin-top: 0.8rem;
 }
-.admin-link, 
-.acct-link{
+
+.admin-link,
+.acct-link {
     display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 8px 12px;
+    gap: 0.3rem;
+    padding: 0.8rem 1.2rem;
     color: #99C6FF;
     cursor: pointer;
     list-style: none;
@@ -151,9 +160,11 @@ body {
 
 .admin-link-txt {
     flex: 1;
-    display: inline-block;margin: 0;
+    display: inline-block;
+    margin: 0;
     padding: 0;
-    font-size: 12.5px;
+    font-size: 1.25rem;
+    font-weight: 400;
     color: #99C6FF;
     white-space: nowrap;
 }
@@ -161,31 +172,45 @@ body {
 .admin-btn {
     background: transparent;
     color: #4db8d4;
-    font-size: 9px;
-    padding: 2px 6px;
-    border-radius: 3px;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.3rem;
     font-weight: 600;
     text-decoration: none;
     flex-shrink: 0;
     border: 1px solid;
 }
 
-/*-----------Side Bar------------*/
+/*----------------main-content-----------------*/
 .main-header {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 22px 22px 14px;
-    gap: 14px;
-    overflow-y: auto; 
+    padding: 2.2rem 2.2rem 1.4rem;
+    gap: 1.4rem;
+    overflow-y: auto;
     height: 100vh;
-    scrollbar-width: none; 
+    scrollbar-width: none;
 }
 
 .main-header::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
+/*-----Toggle Button-----*/
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: #99C6FF;
+    font-size: 2.4rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: none;
+    width: fit-content;
+    align-items: flex-end;
+}
+
+/*-------------Top Bar-----------------*/
 .top-bars {
     display: flex;
     align-items: flex-start;
@@ -193,69 +218,70 @@ body {
     flex-shrink: 0;
 }
 
-.top-bars h1{
-    font-size: 30px;
+.top-bars h1 {
+    font-size: 3rem;
     font-weight: 600;
     color: #ffffff;
 }
 
 .welcome {
-    font-size: 14px;
+    font-size: 1.4rem;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    margin-top: 3px;
+    margin-top: 0.3rem;
 }
 
 .dash-btn {
     background: #f5a623;
     color: #1a1000;
     border: none;
-    padding: 9px 18px;
-    border-radius: 7px;
-    font-size: 13px;
+    padding: 0.9rem 1.8rem;
+    border-radius: 0.7rem;
+    font-size: 1.3rem;
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.6rem;
     font-family: 'Inter', sans-serif;
 }
 
-/*-------------case cards--------------------*/
+/*-------------Case-cards------------*/
 .case-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 1.2rem;
     flex-shrink: 0;
 }
 
 .cards {
     background: #0F2236;
     border: 1px solid #1e3a58;
-    border-radius: 10px;
-    padding: 16px 18px;
+    border-radius: 1rem;
+    padding: 1.6rem 1.8rem;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
 .card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 .case-stats {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 600;
-    letter-spacing: .7px;
+    letter-spacing: 0.07rem;
     color: #99C6FF;
     text-transform: uppercase;
 }
 
 .card-icon {
-    font-size: 22px;
+    font-size: 2.2rem;
 }
 
 .card-icon.ia { 
@@ -271,38 +297,35 @@ body {
     color: #e88a30; 
 }
 
-
 .case-num {
-    font-size: 34px;
+    font-size: 3.4rem;
     font-weight: 700;
     color: #fff;
     line-height: 1.5;
-    margin-top: 3px;
+    margin-top: 0.3rem;
 }
 
 .sub-no {
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 400;
     color: #99C6FF;
     line-height: 1.4;
 }
 
-/*------------------recent cases row--------------------------- */
-
+/*----------reent cases----------*/
 .recents-cases-wrapper {
     display: grid;
-    grid-template-columns: 1fr 450px;
-    gap: 12px;
+    grid-template-columns: 1fr 45rem;
+    gap: 1.2rem;
     flex: 1;
-    min-height: 500px;
-    margin-bottom: 20px;
-
+    min-height: 50rem;
+    margin-bottom: 2rem;
 }
 
 .recent-case {
     background: #0F2236;
     border: 1px solid #1e3a58;
-    border-radius: 10px;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -314,29 +337,27 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
-    padding: 50px 16px 30px 16px;
-    min-height: 60px;
-    gap: 16px;
-
+    padding: 3rem 1.6rem;
+    min-height: 6rem;
+    gap: 1.6rem;
 }
 
 .case-head h3 {
-    font-size: 15px;
+    font-size: 1.8rem;
     font-weight: 600;
     color: #ffffff;
     flex-shrink: 0;
     white-space: nowrap;
     line-height: 1;
     align-self: center;
-
 }
 
 .case-link {
-    font-size: 15px;
+    font-size: 1.5rem;
     color: #C9A84C;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 0.3rem;
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
@@ -344,8 +365,9 @@ body {
     align-self: center;
     line-height: 1;
 }
-.case-link i{
-    width: 20px;
+
+.case-link i {
+    width: 2rem;
     color: #C9A84C;
 }
 
@@ -353,6 +375,7 @@ body {
     color: #4db8d4;
 }
 
+/*---------Table----------------*/
 .table-wrap {
     overflow-y: auto;
     flex: 1;
@@ -363,27 +386,25 @@ body {
     display: none;
 }
 
-
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 
 thead {
     background: #152540;
-    padding: 12px 14px;
+    padding: 1.2rem 1.4rem;
 }
 
 th {
-    padding: 20px 16px;
+    padding: 2rem 1.6rem;
     text-align: left;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 400;
-    letter-spacing: .7px;
+    letter-spacing: 0.07rem;
     color: #ffffff;
     text-transform: uppercase;
-    border-bottom: 1px solid #1e3a58;
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #ffffff;
 }
@@ -403,83 +424,15 @@ tbody tr:last-child {
 }
 
 td {
-    padding: 16px 16px;
+    padding: 1.6rem;
     color: #ccdff0;
     vertical-align: top;
 }
 
-.case-id {
-    font-size: 14px;
-    color: #C9A84C;
-    font-weight: 400;
-    letter-spacing: .4px;
-    margin-bottom: 8px;
-}
-
-.case-title {
-    font-size: 15px;
-    font-weight: 400;
-    color: #FFFFFF;
-    margin-bottom: 8px;
-    white-space: normal;
-    word-wrap: break-word;
-    max-width: 150px;
-    line-height: 1.6;
-    
-}
-
-.case-type {
-    font-size: 12.5px;
-    font-weight: 400;
-    color: #99C6FF;
-    margin-top: 4px;
-}
-
-.case-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 400;
-    white-space: nowrap;;
-}
-
-.case-status.ba { 
-    background: #284025;
-    color: #34C759; 
-}
-.case-status.bb { 
-    background: #990003;
-    color: #FF383C; 
-}
-.case-status.bc { 
-    background: #862F01;
-    color: #FF8D28; 
-}
-.case-status.bd { 
-    background: #253140;
-    color: #0088FF; 
-}
-.case-status.be{
-    background: #284025;
-    color: #34C759;
-}
-.case-status::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: currentColor;
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.status-txt {
-    color: #F8FAFC;
-    font-size: 12px;
-    font-weight: 400;
+tbody tr td:nth-child(2),
+tbody tr td:nth-child(3),
+tbody tr td:nth-child(4) {
+    vertical-align: middle;
 }
 
 td.case-date {
@@ -488,27 +441,92 @@ td.case-date {
     white-space: normal;
     word-wrap: break-word;
     word-break: break-word;
-    max-width: 80px; 
+    max-width: 8rem;
     line-height: 1.6;
-    font-size: 15px;
+    font-size: 1.5rem;
     color: #FFFFFF;
 }
-td.case-date {
-    vertical-align: middle;
-    text-align: left;
-}
-tbody tr td:nth-child(2),
-tbody tr td:nth-child(3),
-tbody tr td:nth-child(4) {
-    vertical-align: middle;
+
+.case-id {
+    font-size: 1.4rem;
+    color: #C9A84C;
+    font-weight: 400;
+    letter-spacing: 0.04rem;
+    margin-bottom: 0.8rem;
 }
 
+.case-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 0.8rem;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 15rem;
+    line-height: 1.6;
+}
 
-/*---------------------upcoming hearings----------------------*/
+.case-type {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #99C6FF;
+    margin-top: 0.4rem;
+}
+
+/*-------------Status Badges-------------*/
+.case-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.case-status.ba { 
+    background: #284025; 
+    color: #34C759; 
+}
+.case-status.bb { 
+    background: #990003; 
+    color: #FF383C; 
+}
+.case-status.bc { 
+    background: #862F01; 
+    color: #FF8D28; 
+}
+.case-status.bd { 
+    background: #253140; 
+    color: #0088FF; 
+}
+.case-status.be { 
+    background: #284025; 
+    color: #34C759; 
+}
+
+.case-status::before {
+    content: '';
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.status-txt {
+    color: #F8FAFC;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/*------------Upcoming Hearings------------------*/
 .hearing-side {
     background: #0F2236;
     border: 1px solid #1e3a58;
-    border-radius: 10px;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -519,32 +537,30 @@ tbody tr td:nth-child(4) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 40px 20px 10px;
+    padding: 2rem 1.6rem;
     flex-shrink: 0;
-    gap: 16px;
+    gap: 1.6rem;
 }
 
 .hearing-head h3 {
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 600;
     color: #ffffff;
-    white-space: nowrap; 
-
+    white-space: nowrap;
 }
 
 .hearing-link {
-    font-size: 15px;
+    font-size: 1.5rem;
     color: #C9A84C;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 0.3rem;
     cursor: pointer;
-    text-decoration: none
-    
 }
+
 .hearing-link i {
-    width: 20px;
+    width: 2rem;
     color: #C9A84C;
 }
 
@@ -556,28 +572,28 @@ tbody tr td:nth-child(4) {
     flex: 1;
     scrollbar-width: none;
     justify-content: space-between;
-}
-
-.hearing-title {
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: 400;
-    margin-bottom: 6px;
+    padding-top: 0;
 }
 
 .hearing-list::-webkit-scrollbar {
     display: none;
 }
 
+.hearing-title {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+}
+
 .hearings {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
+    gap: 1.2rem;
+    padding: 3rem 1.6rem;
     cursor: pointer;
     transition: background .12s;
-    border-bottom: 1px solid #ffffff; 
-
+    border-bottom: 1px solid #f5fffa;
 }
 
 .hearings:last-child {
@@ -593,28 +609,30 @@ tbody tr td:nth-child(4) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
+    min-width: 4rem;
+    max-width: 4rem;
+    height: 7rem;
     background: #213038;
-    border-radius: 6px;
-    padding: 6px 8px;
+    border-radius: 1rem;
+    padding: 0.6rem 0.8rem;
     flex-shrink: 0;
 }
 
 .hearing-day {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: #C9A84C;    
+    color: #C9A84C;
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 0.6rem;
 }
 
 .hearing-month {
-    font-size: 9px;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: .7px;
-    color: #99C6FF;    
+    letter-spacing: 0.07rem;
+    color: #99C6FF;
     text-transform: uppercase;
-    margin-top: 2px;
+    margin-top: 0.2rem;
 }
 
 .hearing-info {
@@ -627,17 +645,17 @@ tbody tr td:nth-child(4) {
 }
 
 .hearing-name {
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 0.6rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .hearing-sub {
-    font-size: 11px;
+    font-size: 1.1rem;
     color: #99C6FF;
     white-space: nowrap;
     overflow: hidden;
@@ -646,44 +664,37 @@ tbody tr td:nth-child(4) {
 
 .hdays {
     background: #2F3139;
-    font-size: 11px;
+    font-size: 1.1rem;
     font-weight: 600;
-    padding: 6px 8px;
-    border-radius: 6px;
-    align-items: center;
+    padding: 0.6rem 0.8rem;
+    border-radius: 1rem;
     display: flex;
+    align-items: center;
     justify-content: center;
-    min-width: 35px;
+    min-width: 4rem;
+    max-width: 4rem;
+    height: 5rem;
     flex-shrink: 0;
 }
-.day1 {
-    color: #FF7800;
+
+.day1 { 
+    color: #FF7800; 
 }
-.day2 {
-    color: #C9A84C;
+.day2 { 
+    color: #C9A84C; 
 }
-.day3 {
-    color: #FF7800;
+.day3 { 
+    color: #FF7800; 
 }
-.day4 {
-    color: #42ADE2;
+.day4 { 
+    color: #42ADE2; 
 }
-.day5 {
-    color: #FF7800;
-}
-.toggle-btn {
-    background: transparent;
-    border: none;
-    color: #99C6FF;
-    font-size: 24px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    display: none;
-    width: fit-content;
-    align-items: flex-end; 
+.day5 { 
+    color: #FF7800; 
 }
 
-/* --------iPad------------------------ */
+/*----------------Media Queries------------*/
+/*--------iPad---------------*/
 @media (min-width: 768px) and (max-width: 1024px) {
     .wrapper {
         flex-direction: column;
@@ -697,7 +708,7 @@ tbody tr td:nth-child(4) {
         height: 100vh;
         z-index: 999;
         background: #0D1B2A;
-        width: 220px;
+        width: 22rem;
     }
 
     .side-bar.show-sidebar {
@@ -713,12 +724,20 @@ tbody tr td:nth-child(4) {
     }
 
     .main-header {
-        padding: 16px;
-        gap: 12px;
+        padding: 1.6rem;
+        gap: 1.2rem;
     }
 
     .case-cards {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards {
+        align-items: flex-start;
+    }
+
+    .card-top {
+        width: 100%;
     }
 
     .recents-cases-wrapper {
@@ -727,29 +746,79 @@ tbody tr td:nth-child(4) {
     }
 
     .hearing-side {
-        height: 400px;
+        height: 40rem;
     }
-    .table-wrap{
+
+    .table-wrap {
         overflow-x: auto;
     }
+
     table {
-        min-height: 600px;
+        min-width: 60rem;
         table-layout: auto;
     }
+
+    th {
+        padding: 2rem 1.6rem;
+    }
+
+    td {
+        padding: 1.6rem;
+    }
+
     td.case-date {
         white-space: normal;
         word-break: break-word;
-        min-width: 60px;
-        max-width: 70px;
+        min-width: 6rem;
+        max-width: 7rem;
         line-height: 1.6;
     }
+
     .case-head {
-        padding: 30px 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        padding: 3rem 1.6rem;
+        min-height: 6rem;
+        gap: 1.6rem;
     }
-    
+
+    .case-head h3 {
+        white-space: nowrap;
+        font-size: 1.6rem;
+        flex-shrink: 0;
+    }
+
+    .case-link {
+        white-space: nowrap;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
+
+    .hearing-head {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3rem 2rem 1rem;
+    }
+
+    .hearing-head h3 {
+        white-space: nowrap;
+        font-size: 2rem;
+        flex-shrink: 0;
+    }
+
+    .hearing-link {
+        white-space: nowrap;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
 }
 
-/* --------Android------------------------ */
+/*--------Android--------*/
 @media (max-width: 767px) {
     .wrapper {
         flex-direction: column;
@@ -765,7 +834,7 @@ tbody tr td:nth-child(4) {
         height: 100vh;
         z-index: 999;
         background: #0D1B2A;
-        width: 220px;
+        width: 22rem;
     }
 
     .side-bar.show-sidebar {
@@ -781,15 +850,17 @@ tbody tr td:nth-child(4) {
     }
 
     .main-header {
-        padding: 16px;
-        gap: 12px;
+        padding: 1.6rem;
+        gap: 1.2rem;
         height: auto;
         overflow-y: visible;
     }
 
     .top-bars {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0;
     }
 
     .case-cards {
@@ -799,6 +870,11 @@ tbody tr td:nth-child(4) {
     .cards {
         aspect-ratio: auto;
         height: auto;
+        align-items: flex-start;
+    }
+
+    .card-top {
+        width: 100%;
     }
 
     .recents-cases-wrapper {
@@ -810,41 +886,58 @@ tbody tr td:nth-child(4) {
     .hearing-side {
         height: auto;
     }
+
     .hearing-head {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 10px;
         justify-content: space-between;
-    }
-    .hearing-head-h3 {
-        white-space: nowrap;
-        font-size: 14px;
+        padding: 3rem 2rem 1rem;
+        gap: 1rem;
         flex-shrink: 0;
     }
+
+    .hearing-head h3 {
+        white-space: nowrap;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        align-self: center;
+    }
+
     .hearing-link {
         white-space: nowrap;
-        font-size: 13px;
+        font-size: 1.3rem;
         flex-shrink: 0;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        align-self: center;
     }
+
     .case-head {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         flex-shrink: 0;
-        padding: 30px 16px;
-        min-height: 60px;
-        gap: 16px;
+        padding: 3rem 1.6rem;
+        min-height: 6rem;
+        gap: 1.6rem;
     }
+
     .case-head h3 {
         white-space: nowrap;
-        font-size: 14px;
+        font-size: 1.5rem;
         flex-shrink: 0;
     }
-    
+
     .case-link {
-        font-size: 12px;
+        white-space: nowrap;
+        font-size: 1.2rem;
+        flex-shrink: 0;
     }
 
     .table-wrap {
@@ -852,40 +945,39 @@ tbody tr td:nth-child(4) {
     }
 
     table {
-        min-width: 550px;
+        min-width: 55rem;
         table-layout: auto;
     }
+
     th {
-        padding: 20px 16px;
+        padding: 2rem 1.6rem;
     }
+
     td {
-        padding: 16px;
+        padding: 1.6rem;
     }
+
     td.case-date {
         white-space: normal;
         word-break: break-word;
-        min-width: 60px;
-        max-width: 90px;
+        min-width: 6rem;
+        max-width: 9rem;
         line-height: 1.6;
     }
+
     .case-title {
-        font-size: 12px;
-        max-width: 90px;
+        font-size: 1.2rem;
+        max-width: 9rem;
     }
-    .top-bars {
-        flex-direction: row; 
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 0;
-    }
+
     .dash-btn {
-        font-size: 11px;
-        padding: 7px 12px;
-        border-radius: 6px;
+        font-size: 1.1rem;
+        padding: 0.7rem 1.2rem;
+        border-radius: 0.6rem;
     }
 }
 
-/* --------iPhone------------------------ */
+/*-------------iPhone-------------*/
 @media (max-width: 430px) {
     .side-bar {
         display: none;
@@ -895,7 +987,7 @@ tbody tr td:nth-child(4) {
         height: 100vh;
         z-index: 999;
         background: #0D1B2A;
-        width: 220px;
+        width: 22rem;
     }
 
     .side-bar.show-sidebar {
@@ -908,32 +1000,48 @@ tbody tr td:nth-child(4) {
 
     .case-cards {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        gap: 0.8rem;
+    }
+
+    .cards {
+        align-items: flex-start;
+    }
+
+    .card-top {
+        width: 100%;
     }
 
     .case-stats {
-        font-size: 10px;
+        font-size: 1rem;
     }
 
     .case-num {
-        font-size: 24px;
+        font-size: 2.4rem;
     }
 
     .sub-no {
-        font-size: 11px;
+        font-size: 1.1rem;
     }
 
     .name {
-        font-size: 18px;
+        font-size: 1.8rem;
+    }
+
+    .top-bars {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0;
     }
 
     .top-bars h1 {
-        font-size: 22px;
+        font-size: 2.2rem;
     }
 
     .dash-btn {
-        font-size: 11px;
-        padding: 7px 12px;
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+        border-radius: 0.6rem;
     }
 
     .recents-cases-wrapper {
@@ -947,38 +1055,76 @@ tbody tr td:nth-child(4) {
 
     .hearing-side {
         height: auto;
-        margin-top: 12px;
+        margin-top: 1.2rem;
     }
 
     th {
-        font-size: 10px;
-        padding: 8px 8px;
+        font-size: 1rem;
+        padding: 0.8rem;
     }
 
     td {
-        font-size: 11px;
-        padding: 8px 8px;
+        font-size: 1.1rem;
+        padding: 0.8rem;
     }
+
+    td.case-date {
+        white-space: normal;
+        word-break: break-word;
+        min-width: 6rem;
+        max-width: 7rem;
+        line-height: 1.6;
+    }
+
     .case-head {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         flex-shrink: 0;
-        padding: 30px 8px;
-        min-height: 60px;
-        gap: 16px;
+        padding: 3rem 0.8rem;
+        min-height: 6rem;
+        gap: 1.6rem;
     }
-    .top-bars {
-        flex-direction: row; 
-        align-items: flex-start;
+
+    .case-head h3 {
+        white-space: nowrap;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+
+    .case-link {
+        white-space: nowrap;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .hearing-head {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         justify-content: space-between;
-        gap: 0;
+        padding: 3rem 2rem 1rem;
+        gap: 1rem;
+        flex-shrink: 0;
     }
-    .dash-btn {
-        font-size: 10px;
-        padding: 6px 10px;
-        border-radius: 6px;
+
+    .hearing-head h3 {
+        white-space: nowrap;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        margin: 0;
+        padding: 0;
+        align-self: center;
     }
-    
+
+    .hearing-link {
+        white-space: nowrap;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        align-self: center;
+    }
 }
