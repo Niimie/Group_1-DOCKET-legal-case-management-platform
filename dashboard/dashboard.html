@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docket-Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="../navigation/client.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-------Side-Bar-------->
+      <aside class="side-bar">
+        <div class="firm-name">
+          <h2 class="name">
+            Mex-Trial &amp; <br />
+            Associates
+          </h2>
+        </div>
+
+        
+
+        <nav class="side-bar-nav">
+          <div class="main-menus">
+            <p class="menu">Main Menu</p>
+          </div>
+
+          <ul class="nav-lists">
+            <li class="nav-list">
+              <i class="ph ph-squares-four"></i>
+              <p class="nav-text">Dashboard</p>
+              <div class="rbadge">1</div> 
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-scales"></i
+              ><a href="../cases/cases.html" class="nav-list-link">Cases</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-users"></i
+              ><a href="../clients/clients.html" class="nav-list-link">Clients</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-calendar-dots"></i
+              ><a href="../hearings/hearings.html" class="nav-list-link">Hearings</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-calendar-blank"></i
+              ><a href="" class="nav-list-link">Lawyers</a>
+            </li>
+          </ul>
+
+          <div class="admins">
+            <p class="admin">Admin</p>
+            <ul class="admin-links">
+              <li class="admin-link">
+                <i class="ph ph-shield-checkered"></i>
+                <p class="admin-link-txt">Admin Portal</p>
+                <a href="../admin/admin.html" class="admin-btn">Admin</a>
+                
+              </li>
+            </ul>
+          </div>
+
+          <div class="accounts">
+            <h3 class="admin">Account</h3>
+            <ul class="acct-links">
+              <li class="acct-link">
+                <i class="ph ph-gear"></i
+                ><a href="../settings/settings.html" class="nav-list-link"> Settings</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-------Top-Bar-------->
+      <div class="main-header">
+        <button class="toggle-btn"><i class="ph ph-list"></i></button>
+
+        <header class="top-bars">
+          <div class="top-barleft">
+            <h1 class="dash-name">Dashboard</h1>
+            <p class="welcome">Welcome back, John</p>
+          </div>
+          <button class="dash-btn"><i class="ph ph-plus"></i> New Case</button>
+
+        </header>
+
+
+        <!------------------Case Cards----------------------->
+        <div class="case-cards">
+          <div class="cards">
+            <div class="card-top">
+              <p class="case-stats">TOTAL CASES</p>
+              <i class="ph ph-scales card-icon ia"></i>
+            </div>
+            <h3 class="case-num">8</h3>
+            <p class="sub-no">+ 2 this month</p>
+          </div>
+          
+          <div class="cards">
+            <div class="card-top">
+              <p class="case-stats">ACTIVE CASES</p>
+              <i class="ph ph-squares-four card-icon ib"></i>
+            </div>
+            <h3 class="case-num">5</h3>
+            <p class="sub-no">1 urgent</p>
+          </div>
+          
+          <div class="cards">
+            <div class="card-top">
+              <p class="case-stats">PENDING</p>
+              <i class="ph ph-clock card-icon ic"></i>
+            </div>
+            <h3 class="case-num">1</h3>
+            <p class="sub-no">Awaiting action</p>
+          </div>
+          
+          <div class="cards">
+            <div class="card-top">
+              <p class="case-stats">HEARING THIS WEEK</p>
+              <i class="ph ph-calendar-check card-icon id"></i>
+            </div>
+            <h3 class="case-num">1</h3>
+            <p class="sub-no">Next 7 days</p>
+          </div>
+        </div>
+
+        <!--------------------------Recent cases Row--------------------------------->
+        <div class="recents-cases-wrapper">
+          <div class="recent-case">
+            <div class="case-head">
+              <h3 class="case-title-t">Recent Cases</h3>
+              <a href="#" class="case-link">View all <i class="ph-bold ph-arrow-right"></i></a>
+            </div>
+          
+
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>CASES</th>
+                    <th>CLIENTS</th>
+                    <th>LAWYERS</th>
+                    <th>STATUS</th>
+                    <th>HEARING</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="case-id">SLT-001</p>
+                      <p class="case-title">Obi v. First Bank Nigeria</p>
+                      <p class="case-type">Civil Litigation</p>
+                    </td>
+                    <td>Marcus Obi</td>
+                    <td>Adaeze Okafor</td>
+                    <td>
+                      <div class="case-status ba">
+                        <p class="status-txt">Active</p>
+                      </div>
+                    </td>
+                    <td class="case-date">12 March 2026</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <p class="case-id">SLT-002</p>
+                      <p class="case-title">State v. Danladi Emmanuel</p>
+                      <p class="case-type">Criminal Law</p>
+                    </td>
+                    <td>Danladi Emmanuel</td>
+                    <td>Adaeze Okafor</td>
+                    <td>
+                      <div class="case-status bb">
+                        <p class="status-txt">Urgent</p>
+                      </div>
+                    </td>
+                    <td class="case-date">7 March 2026</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="case-id">SLT-003</p>
+                      <p class="case-title">Adewale Divorce Proceedings</p>
+                      <p class="case-type">Family Law</p>
+                    </td>
+                    <td>Bola Adewale</td>
+                    <td>Fatima Al-Hassan</td>
+                    <td>
+                      <div class="case-status bc">
+                        <p class="status-txt">Pending</p>
+                      </div>
+                    </td>
+                    <td class="case-date">15 March 2026</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>
+                      <p class="case-id">SLT-004</p>
+                      <p class="case-title">Chukwu Estates Dispute</p>
+                      <p class="case-type">Property Law</p>
+                    </td>
+                    <td>Ify Chukwu</td>
+                    <td>Ngozi Eze</td>
+                    <td>
+                      <div class="case-status bd">
+                        <p class="status-txt">In Review</p>
+                      </div>
+                    </td>
+                    <td class="case-date">18 March 2026</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <p class="case-id">SLT-005</p>
+                      <p class="case-title">Okonkwo Property</p>
+                      <p class="case-type">Property Law</p>
+                    </td>
+                    <td>Ify Chukwu</td>
+                    <td>Ngozi Eze</td>
+                    <td>
+                      <div class="case-status be">
+                        <p class="status-txt">Active</p>
+                      </div>
+                    </td>
+                    <td class="case-date">18 March 2026</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          
+          <!---------------------upcoming hearings--------------------->
+           <aside class="hearing-side">
+            <div class="hearing-head">
+              <h3 class="hearing-title">Upcoming Hearings</h3>
+              <a href="#" class="hearing-link">Calendar <i class="ph ph-arrow-right"></i></a>
+            </div>
+            
+            <div class="hearing-list">
+              <div class="hearings">
+                <div class="hearing-db">
+                  <p class="hearing-day">7</p>
+                  <p class="hearing-month">MAR</p>
+                </div>
+                
+                <div class="hearing-info">
+                  <p class="hearing-title">State V. Danladi Emmanuel</p>
+                  <p class="hearing-sub">Adaeze Okafor - Criminal Law</p>
+                </div>
+                
+                <div class="hdays">
+                  <p class="day1">3d</p>
+                </div>
+              </div>
+              
+              <div class="hearings">
+                <div class="hearing-db">
+                  <p class="hearing-day">12</p>
+                  <p class="hearing-month">MAR</p>
+                </div>
+                
+                <div class="hearing-info">
+                  <p class="hearing-title">Obi V. First Bank Nigeria</p>
+                  <p class="hearing-sub">Adaeze Okafor - Civil Litigation</p>
+                </div>
+                <div class="hdays">
+                  <p class="day2">8d</p>
+                </div>
+              </div>
+              
+              <div class="hearings">
+                <div class="hearing-db">
+                  <p class="hearing-day">15</p>
+                  <p class="hearing-month">MAR</p>
+                </div>
+                <div class="hearing-info">
+                  <p class="hearing-title">Adewale Divorce Proceedings</p>
+                  <p class="hearing-sub">Fatima Al-Hassan - Family Law</p>
+                </div>
+                
+                <div class="hdays">
+                  <p class="day3">11d</p>
+                </div>
+              </div>
+              
+              <div class="hearings">
+                <div class="hearing-db">
+                  <p class="hearing-day">18</p>
+                  <p class="hearing-month">MAR</p>
+                </div>
+                <div class="hearing-info">
+                  <p class="hearing-title">Chukwu Estates Dispute</p>
+                  <p class="hearing-sub">Ngozi Eze - Property Law</p>
+                </div>
+                <div class="hdays">
+                  <p class="day4">14d</p>
+                </div>
+              </div>
+              
+              <div class="hearings">
+                <div class="hearing-db">
+                  <p class="hearing-day">27</p>
+                  <p class="hearing-month">MAR</p>
+                </div>
+                <div class="hearing-info">
+                  <p class="hearing-title">Okonkwo Property</p>
+                  <p class="hearing-sub">Ngozi Eze - Property Law</p>
+                </div>
+                <div class="hdays">
+                  <p class="day5">23d</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  <script src="dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./hearing.css">
+    <title>Hearing</title>
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+ <aside class="side-bar">
+        <div class="firm-name">
+          <h2 class="name">
+            Mex-Trial &amp; <br />
+            Associates
+          </h2>
+        </div>
+
+        
+
+        <nav class="side-bar-nav">
+          <div class="main-menus">
+            <p class="menu">Main Menu</p>
+          </div>
+
+          <ul class="nav-lists">
+            <li class="nav-list">
+              <i class="ph ph-squares-four"></i>
+              <p class="nav-text">Dashboard</p>
+              <div class="rbadge">1</div> 
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-scales"></i
+              ><a href="../cases/cases.html" class="nav-list-link">Cases</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-users"></i
+              ><a href="../clients/clients.html" class="nav-list-link">Clients</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-calendar-dots"></i
+              ><a href="./hearings.html" class="nav-list-link">Hearings</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-calendar-blank"></i
+              ><a href="../lawyer/lawyer.html" class="nav-list-link">Lawyers</a>
+            </li>
+          </ul>
+
+          <div class="admins">
+            <p class="admin">Admin</p>
+            <ul class="admin-links">
+              <li class="admin-link">
+                <i class="ph ph-shield-checkered"></i>
+                <p class="admin-link-txt">Admin Portal</p>
+                <a href="../admin/admin.html" class="admin-btn">Admin</a>
+                
+              </li>
+            </ul>
+          </div>
+
+          <div class="accounts">
+            <h3 class="admin">Account</h3>
+            <ul class="acct-links">
+              <li class="acct-link">
+                <i class="ph ph-gear"></i
+                ><a href="../settings/settings.html" class="nav-list-link"> Settings</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+        <main class="hearings">
+            <!--TABS-->
+            <section class="tab">
+                <button class="tabs active-tab">All Upcoming</button>
+                <button class="tabs">This week {1}</button>
+                <button class="tabs">All Cases</button>
+            </section>
+            <!--CARDS-->
+            <section class="card">
+    
+                <table>
+                    <!--TABLE HEADER-->
+                    <thead>
+                        <tr>
+                            <th class="card-title" colspan="6">Court Dates & Hearing</th>
+                        </tr>
+    
+                        <tr>
+                            <th>CASE</th>
+                            <th>CLIENT</th>
+                            <th>LAWYER</th>
+                            <th>HEARING DATES</th>
+                            <th>DAYS UNTIL</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <!--TABLE BODY-->
+                    <tbody>
+                        <tr>
+                            <td class="hearing-flex">
+                                <p class="slt">SLT-002</p>
+                                <P class="V">State V. Dalandi Emmanuel</P>
+                            </td>
+                            <td>Dalandi Emmanuel</td>
+                            <td>Adaeze Okafor</td>
+                            <td>7 Mar 2026</td>
+                            <td><span class="badge-red">3 days</span></td>
+                            <td><span class="badge-urgent"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="4" cy="4" r="4" fill="#F7060A" />
+                                    </svg>
+                                    &nbsp;Urgent</span></td>
+                        </tr>
+    
+                        <tr>
+                            <td class="hearing-flex">
+                                <p class="slt">SLT-001</p>
+                                <p class="V">Obi V. First Bank Nigeria</p>
+                            </td>
+                            <td>Marcus Obi</td>
+                            <td>Adaeze Okafor</td>
+                            <td>12 Mar, 2026</td>
+                            <td><span class="badge-blue">8 days</span></td>
+                            <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="4" cy="4" r="4" fill="#34C759" />
+                                    </svg>
+                                    &nbsp;Active</span></td>
+                        </tr>
+    
+                        <tr>
+                            <td class="hearing-flex">
+                                <p class="slt">SLT-004</p>
+                                <p class="V">Adewale Divorce Proceedings</p>
+                            </td>
+                            <td>Bola Adewale</td>
+                            <td>Fatima Al-Hassan</td>
+                            <td>15 Mar 2026</td>
+                            <td><span class="badge-blue">11 days</span></td>
+                            <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="4" cy="4" r="4" fill="#34C759" />
+                                    </svg>
+                                    &nbsp;Active</span></td>
+                        </tr>
+    
+                        <tr>
+                            <td class="hearing-flex">
+                                <p class="slt">SLT-007</p>
+                                <P class="V">Okonkwo Property Trasfer</P>
+                            </td>
+                            <td>Emeka Okonkwo</td>
+                            <td>Ngozi Eze</td>
+                            <td>18 Mar 2026</td>
+                            <td><span class="badge-blue">14 days</span></td>
+                            <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="4" cy="4" r="4" fill="#34C759" />
+                                    </svg>
+                                    &nbsp;Active</span></td>
+                        </tr>
+                    </tbody>
+    
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

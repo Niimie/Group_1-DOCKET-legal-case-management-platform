@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cases.css" />
+
+    <!-- LINK THE NAVIGATION CSS -->
+     <link rel="stylesheet" href="../dashboard/dashboard.css">
+</head>
+
+<body>
+       <div class="wrapper">
+        <aside class="side-bar">
+        <div class="firm-name">
+          <h2 class="name">
+            Mex-Trial &amp; <br />
+            Associates
+          </h2>
+        </div>
+
+        
+
+        <nav class="side-bar-nav">
+          <div class="main-menus">
+            <p class="menu">Main Menu</p>
+          </div>
+
+          <ul class="nav-lists">
+            <li class="nav-list">
+              <i class="ph ph-squares-four"></i>
+              <p class="nav-text">Dashboard</p>
+              <div class="rbadge">1</div> 
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-scales"></i
+              ><a href="./cases.html" class="nav-list-link">Cases</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-users"></i
+              ><a href="../clients/clients.html" class="nav-list-link">Clients</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-calendar-dots"></i
+              ><a href="../hearings/hearings.html" class="nav-list-link">Hearings</a>
+            </li>
+
+            <li class="lists">
+              <i class="ph ph-calendar-blank"></i
+              ><a href="../lawyers/lawyers.html" class="nav-list-link">Lawyers</a>
+            </li>
+          </ul>
+
+          <div class="admins">
+            <p class="admin">Admin</p>
+            <ul class="admin-links">
+              <li class="admin-link">
+                <i class="ph ph-shield-checkered"></i>
+                <p class="admin-link-txt">Admin Portal</p>
+                <a href="../admin/admin.html" class="admin-btn">Admin</a>
+                
+              </li>
+            </ul>
+          </div>
+
+          <div class="accounts">
+            <h3 class="admin">Account</h3>
+            <ul class="acct-links">
+              <li class="acct-link">
+                <i class="ph ph-gear"></i
+                ><a href="../settings/settings.html" class="nav-list-link"> Settings</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+        <main class="cases">
+            <div class="accessibility">
+                <div class="search-accessibility">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.1333 24L13.7333 15.6C13.0667 16.1333 12.3 16.5556 11.4333 16.8667C10.5667 17.1778 9.64445 17.3333 8.66667 17.3333C6.24445 17.3333 4.19467 16.4942 2.51733 14.816C0.840001 13.1378 0.000889594 11.088 7.05467e-07 8.66667C-0.000888183 6.24533 0.838223 4.19556 2.51733 2.51733C4.19645 0.839111 6.24622 0 8.66667 0C11.0871 0 13.1373 0.839111 14.8173 2.51733C16.4973 4.19556 17.336 6.24533 17.3333 8.66667C17.3333 9.64444 17.1778 10.5667 16.8667 11.4333C16.5556 12.3 16.1333 13.0667 15.6 13.7333L24 22.1333L22.1333 24ZM8.66667 14.6667C10.3333 14.6667 11.7502 14.0836 12.9173 12.9173C14.0844 11.7511 14.6676 10.3342 14.6667 8.66667C14.6658 6.99911 14.0827 5.58267 12.9173 4.41733C11.752 3.252 10.3351 2.66844 8.66667 2.66667C6.99822 2.66489 5.58178 3.24844 4.41733 4.41733C3.25289 5.58622 2.66933 7.00267 2.66667 8.66667C2.664 10.3307 3.24756 11.7476 4.41733 12.9173C5.58711 14.0871 7.00356 14.6702 8.66667 14.6667Z"
+                            fill="#0D99FF" />
+                    </svg>
+
+                    <input type="search" placeholder="Search cases, clients, ID's..." />
+                </div>
+
+                <button class="status-accessibility">All Statuses <svg width="10" height="5" viewBox="0 0 10 5" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L5 5L10 0H0Z" fill="#0D99FF" />
+                    </svg>
+                </button>
+
+                <button class="all-type-accessibility">All types <svg width="10" height="5" viewBox="0 0 10 5" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L5 5L10 0H0Z" fill="#0D99FF" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="cases-info">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CASE ID</th>
+                            <th>CASES TITLE</th>
+                            <th>CLIENT</th>
+                            <th>LAWYER</th>
+                            <th>STATUS</th>
+                            <th>NEXT HEARING</th>
+                            <th>FILED</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>SLT-001</td>
+                            <td>
+                                <div>
+                                    <h4>Obi v. First Bank Nigeria</h3>
+                                        <p>Civic Litigation</p>
+                                </div>
+                            </td>
+                            <td>Marcus Obi</td>
+                            <td>Adaeze Okafor</td>
+                            <td>
+                                <button class="case-active"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                                            fill="#34C759" />
+                                    </svg> &nbsp;Active
+                                </button>
+                            </td>
+                            <td>12 Mar 2026</td>
+                            <td>4 Nov 2025</td>
+                        </tr>
+
+                        <tr>
+                            <td>SLT-002</td>
+                            <td>
+                                <div>
+                                    <h4>State v. Danladi Emmanuel</h3>
+                                        <p>Criminal Law</p>
+                                </div>
+                            </td>
+                            <td>Danladi Emmanuel</td>
+                            <td>Adaeze Okafor</td>
+                            <td>
+                                <button class="case-urgent"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                                            fill="#FF383C" />
+                                    </svg>
+
+                                    </svg> &nbsp;Urgent
+                                </button>
+                            </td>
+                            <td class="urgent-date">7 Mar 2026</td>
+                            <td>15 Nov 2025</td>
+                        </tr>
+
+                        <tr>
+                            <td>SLT-003</td>
+                            <td>
+                                <div>
+                                    <h4>Chukwu Estates Dispute</h4>
+                                        <p>Property Law</p>
+                                </div>
+                            </td>
+                            <td>Ify Chukwu</td>
+                            <td>Ngozi Eze</td>
+                            <td>
+                                <button class="case-in-review"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                                            fill="#0088FF" />
+                                    </svg>
+                                    &nbsp;In review
+                                </button>
+                            </td>
+                            <td>18 Mar 2026</td>
+                            <td>10 Jan 2025</td>
+                        </tr>
+
+                        <tr>
+                            <td>SLT-004</td>
+                            <td>
+                                <div>
+                                    <h4>Adewale Divorce Proceedings</h4>
+                                    <p>Family Law</p>
+                                </div>
+                            </td>
+                            <td>Bola Adewale</td>
+                            <td>Fatima Al-Hassan</td>
+                            <td>
+                                <button class="case-pending"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                                            fill="#FF8D28" />
+                                    </svg>
+                                    &nbsp;Pending
+                                </button>
+                            </td>
+                            <td>15 Mar 2026</td>
+                            <td>22 Jan 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+       </div>
+
+       <script src="../dashboard/dashboard.js"></script>
+</body>
+
+</html>
