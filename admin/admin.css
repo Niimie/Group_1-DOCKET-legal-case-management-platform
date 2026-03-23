@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Inter, sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #0D1B2A;
+    font-size: 1.6rem;
+}
+
+.admin {
+    padding: 2.9rem;
+}
+
+.info-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.info-display {
+    padding: 2rem;   
+    flex: 1;
+    width: 100%;
+    min-width: 37rem;
+    height: 11.1rem;
+    background-color: #0F2236;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.user-number {
+    color: #0D99FF;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.active-cases {
+    color: #34C759;
+}
+
+.inactive-cases {
+    color: #FF383C;
+}
+
+.members {
+    background-color: #0F2236;
+    border-radius: 16px;
+    padding-bottom: 3rem;
+}
+
+.members-title {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+}
+
+.members-title h3 {
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+.members-title p {
+    font-size: 14px;
+    color: #FFFFFF82;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr.state td{
+    width: 3rem;
+}
+
+td{
+    padding: 3rem 2rem 3rem 1rem;
+    border-bottom: 0.5px solid #FFFFFF5E; 
+}
+
+tr:last-child td {
+    border: none;
+}
+
+
+
+thead tr {
+    background-color: #0D1B2A;
+    border: 1px solid #213038;
+}
+
+th {
+    font-weight: 400;
+    text-align: left;
+    color: #FFFFFF;
+    padding: 1rem;
+}
+
+.user-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.user-flex.opacity {
+    opacity: 0.4;
+}
+
+.user-initials {
+    width: 4.2rem;
+    height: 3.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: #42ADE233;
+    border: 1px solid #00A7E4;
+    font-size: 20px;
+    color: #0D99FF;
+    border-radius: 8px;
+}
+
+.user-initials.red {
+    border-color: #E05252;
+    color: #E05252;
+}
+
+.user-initials.green {
+    border-color: #34C759;
+    color: #34C759;
+}
+
+.user-text h3 {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.user-text p {
+    font-size: 14px;
+    color: #FFFFFF8C;
+}
+
+.senior-partner {
+    width: fit-content;
+    height: 2.7rem;
+    padding: 0.3rem 2.1rem;
+    border-radius: 16px;
+    background-color: #2E1600;
+    color: #C9A84C;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legal-secretary {
+    width: fit-content;
+    height: 2.7rem;
+    padding: 0.3rem 2.1rem;
+    border-radius: 16px;
+    background-color: #082C03;
+    color: #20E451;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.associate {
+    width: fit-content;
+    height: 2.7rem;
+    padding: 0.3rem 2.1rem;
+    border-radius: 16px;
+    background-color: #020338;
+    color: #0088FF;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-email {
+    font-size: 1.8rem;
+    color: #FFFFFF99;
+}
+
+.active {
+    padding: 1.2rem;
+    width: fit-content;
+    border-radius: 20px;
+    background-color: #062402;
+    font-size: 1.5rem;
+    color: #3DE066;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inactive {
+    padding: 1.2rem;
+    width: fit-content;
+    border-radius: 20px;
+    background-color: #360203;
+    font-size: 1.5rem;
+    color: #F7060A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-state {
+    width: 3.8rem;
+    height: 2.4rem;
+    background-color: #213038;
+    padding: 0.3rem;
+    border-radius: 50px;
+    position: relative;
+}
+
+.toggle-shift {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #FFFFFFCC;
+    position: absolute;
+    left: 0;
+}
+    
+.toggle-state.on {
+    background-color: #C9A84C;
+}
+
+.toggle-state.on .toggle-shift {
+    left: auto;
+    right: 0;
+}
+
+.edit-btn {
+    background: transparent;
+    outline: none;
+    border: 2px solid #C9A84C;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+}
+
+.edit-btn span {
+    font-size: 1.4rem;
+    color: #C9A84C;
+}

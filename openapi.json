@@ -1,0 +1,947 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Docket API",
+    "version": "1.0.0",
+    "description": "REST API for Docket — a Legal Case Management Platform. Manages lawyers, clients, cases, and court hearings with role-based access control.\n\n**Roles:**\n- `senior_partner` — Full access\n- `secretary` — Can manage clients, cases, hearings\n- `associate` — Can view own cases and manage hearings\n\n**Auth flow:** POST `/auth/login` → copy `data.token` → send as `Authorization: Bearer <token>` on all protected routes.",
+    "contact": {
+      "name": "Docket Backend Team — TechCrush Capstone 2026"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://docket-backend-tcg1cp-production.up.railway.app/api",
+      "description": "Production (Railway)"
+    },
+    {
+      "url": "http://localhost:5000/api",
+      "description": "Local development"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT obtained from POST /auth/login. Include as: Authorization: Bearer <token>"
+      }
+    },
+    "schemas": {
+      "SuccessEnvelope": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "example": true },
+          "message": { "type": "string", "example": "Operation successful" },
+          "data": { "type": "object" }
+        }
+      },
+      "ErrorEnvelope": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "example": false },
+          "message": { "type": "string", "example": "Something went wrong" },
+          "data": { "type": "object", "nullable": true, "example": null },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": { "type": "string", "example": "email" },
+                "message": { "type": "string", "example": "Invalid email format" }
+              }
+            }
+          }
+        }
+      },
+      "Lawyer": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "example": "550e8400-e29b-41d4-a716-446655440001" },
+          "full_name": { "type": "string", "example": "Adaeze Okonkwo" },
+          "email": { "type": "string", "format": "email", "example": "senior@docket.com" },
+          "phone": { "type": "string", "nullable": true, "example": "+2348011111111" },
+          "specialty": { "type": "string", "nullable": true, "example": "Corporate Law" },
+          "role": { "type": "string", "enum": ["senior_partner", "associate", "secretary"], "example": "senior_partner" },
+          "is_active": { "type": "boolean", "example": true },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Client": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "example": "660f9500-f39c-42e5-b827-557766550001" },
+          "full_name": { "type": "string", "example": "Obiageli Ventures Ltd" },
+          "email": { "type": "string", "format": "email", "example": "obiageli@ventures.com" },
+          "phone": { "type": "string", "example": "+2348012345678" },
+          "address": { "type": "string", "nullable": true, "example": "14 Marina Street, Lagos" },
+          "client_type": { "type": "string", "enum": ["individual", "corporate"], "example": "corporate" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Case": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "SLT-001", "description": "Auto-generated case reference (SLT-XXX format)" },
+          "title": { "type": "string", "example": "Obiageli Ventures Corporate Restructuring" },
+          "description": { "type": "string", "nullable": true, "example": "Dispute over contract non-performance" },
+          "case_type": { "type": "string", "enum": ["Civil", "Criminal", "Corporate", "Family", "Property"], "example": "Corporate" },
+          "status": { "type": "string", "enum": ["Active", "Pending", "In Review", "Urgent", "Closed"], "example": "Active" },
+          "client_id": { "type": "string", "format": "uuid", "example": "660f9500-f39c-42e5-b827-557766550001" },
+          "lawyer_id": { "type": "string", "format": "uuid", "nullable": true, "example": "550e8400-e29b-41d4-a716-446655440002" },
+          "filed_date": { "type": "string", "format": "date", "example": "2026-01-15" },
+          "closed_date": { "type": "string", "format": "date", "nullable": true, "example": null },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "CaseDetail": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Case" },
+          {
+            "type": "object",
+            "properties": {
+              "client": {
+                "nullable": true,
+                "allOf": [{ "$ref": "#/components/schemas/Client" }]
+              },
+              "lawyer": {
+                "nullable": true,
+                "allOf": [{ "$ref": "#/components/schemas/Lawyer" }]
+              },
+              "hearings": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Hearing" }
+              }
+            }
+          }
+        ]
+      },
+      "Hearing": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "example": "770e0400-039d-43f6-9938-668877660001" },
+          "case_id": { "type": "string", "example": "SLT-001" },
+          "hearing_date": { "type": "string", "format": "date", "example": "2026-04-10" },
+          "hearing_time": { "type": "string", "nullable": true, "example": "09:00:00" },
+          "court_name": { "type": "string", "nullable": true, "example": "Lagos High Court" },
+          "notes": { "type": "string", "nullable": true, "example": "Opening arguments" },
+          "outcome": { "type": "string", "nullable": true, "example": "Adjourned to next month" },
+          "urgency": { "type": "string", "enum": ["Red", "Orange", "Green"], "description": "Computed at query time. Red = ≤3 days, Orange = ≤7 days, Green = >7 days", "example": "Green" },
+          "created_by": { "type": "string", "format": "uuid", "example": "550e8400-e29b-41d4-a716-446655440001" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Authentication required — no token or invalid token",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "success": false, "message": "Authentication required. Please log in.", "data": null }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden — your role does not have permission for this action",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "success": false, "message": "Access denied. Insufficient permissions.", "data": null }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "success": false, "message": "Resource not found.", "data": null }
+          }
+        }
+      },
+      "ValidationError": {
+        "description": "Validation failed — check the errors array for field-level details",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": {
+              "success": false,
+              "message": "Validation failed",
+              "data": null,
+              "errors": [{ "field": "email", "message": "Invalid email format" }]
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [{ "bearerAuth": [] }],
+  "tags": [
+    { "name": "Auth", "description": "Login, logout, register, and profile" },
+    { "name": "Lawyers", "description": "Lawyer account management" },
+    { "name": "Clients", "description": "Client management" },
+    { "name": "Cases", "description": "Legal case management" },
+    { "name": "Hearings", "description": "Court hearing scheduling" },
+    { "name": "Dashboard", "description": "Aggregate stats and summary endpoints" }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a new lawyer account",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["full_name", "email", "password", "role"],
+                "properties": {
+                  "full_name": { "type": "string", "example": "Emeka Nwosu" },
+                  "email": { "type": "string", "format": "email", "example": "emeka.nwosu@docket.com" },
+                  "password": { "type": "string", "format": "password", "example": "Password123!", "description": "Min 8 chars, must include uppercase, lowercase, number, and special character" },
+                  "phone": { "type": "string", "example": "+2348012345678" },
+                  "specialty": { "type": "string", "example": "Criminal Law" },
+                  "role": { "type": "string", "enum": ["senior_partner", "associate", "secretary"], "example": "associate" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Account created — returns JWT and user profile",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "example": {
+                  "success": true,
+                  "message": "Account created successfully",
+                  "data": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                    "user": { "id": "550e8400-e29b-41d4-a716-446655440099", "full_name": "Emeka Nwosu", "email": "emeka.nwosu@docket.com", "role": "associate" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/ValidationError" },
+          "409": { "description": "Email already registered" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login and receive a JWT",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": { "type": "string", "format": "email", "example": "senior@docket.com" },
+                  "password": { "type": "string", "format": "password", "example": "Password123!" }
+                }
+              },
+              "examples": {
+                "senior_partner": { "summary": "Senior Partner", "value": { "email": "senior@docket.com", "password": "Password123!" } },
+                "associate": { "summary": "Associate", "value": { "email": "associate@docket.com", "password": "Password123!" } },
+                "secretary": { "summary": "Secretary", "value": { "email": "secretary@docket.com", "password": "Password123!" } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "example": {
+                  "success": true,
+                  "message": "Login successful",
+                  "data": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                    "user": { "id": "550e8400-e29b-41d4-a716-446655440001", "full_name": "Adaeze Okonkwo", "email": "senior@docket.com", "role": "senior_partner" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "description": "Invalid credentials or inactive account" }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Logout (client-side token invalidation)",
+        "description": "Server-side logout is a no-op — discard the token on the client.",
+        "responses": {
+          "200": { "description": "Logged out successfully" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get the current user's profile",
+        "responses": {
+          "200": {
+            "description": "Profile retrieved",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "example": {
+                  "success": true,
+                  "message": "Profile retrieved successfully",
+                  "data": { "id": "550e8400-e29b-41d4-a716-446655440001", "full_name": "Adaeze Okonkwo", "email": "senior@docket.com", "role": "senior_partner", "specialty": "Corporate Law", "is_active": true }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/lawyers": {
+      "get": {
+        "tags": ["Lawyers"],
+        "summary": "Get all active lawyers",
+        "responses": {
+          "200": {
+            "description": "List of lawyers",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SuccessEnvelope" },
+                "example": {
+                  "success": true,
+                  "message": "Lawyers retrieved successfully",
+                  "count": 6,
+                  "data": [{ "id": "550e8400-e29b-41d4-a716-446655440001", "full_name": "Adaeze Okonkwo", "email": "senior@docket.com", "role": "senior_partner", "specialty": "Corporate Law", "is_active": true }]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      },
+      "post": {
+        "tags": ["Lawyers"],
+        "summary": "Create a new lawyer",
+        "description": "Requires `senior_partner` role.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["full_name", "email", "password", "specialty", "role"],
+                "properties": {
+                  "full_name": { "type": "string", "example": "Ngozi Eze" },
+                  "email": { "type": "string", "format": "email", "example": "ngozi@docket.com" },
+                  "password": { "type": "string", "format": "password", "example": "Password123!" },
+                  "phone": { "type": "string", "example": "+2348031234567" },
+                  "specialty": { "type": "string", "example": "Family Law" },
+                  "role": { "type": "string", "enum": ["senior_partner", "associate", "secretary"], "example": "associate" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Lawyer created. A welcome email is sent automatically." },
+          "400": { "$ref": "#/components/responses/ValidationError" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "409": { "description": "Email already registered" }
+        }
+      }
+    },
+    "/lawyers/{id}": {
+      "get": {
+        "tags": ["Lawyers"],
+        "summary": "Get a lawyer by ID",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" }, "example": "550e8400-e29b-41d4-a716-446655440001" }],
+        "responses": {
+          "200": { "description": "Lawyer details" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "put": {
+        "tags": ["Lawyers"],
+        "summary": "Update a lawyer",
+        "description": "Requires `senior_partner` role.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "full_name": { "type": "string" },
+                  "phone": { "type": "string" },
+                  "specialty": { "type": "string" },
+                  "role": { "type": "string", "enum": ["senior_partner", "associate", "secretary"] }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Lawyer updated" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/lawyers/{id}/deactivate": {
+      "patch": {
+        "tags": ["Lawyers"],
+        "summary": "Deactivate a lawyer",
+        "description": "Soft-deletes the lawyer account. Requires `senior_partner` role. Cannot deactivate yourself.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "Lawyer deactivated" },
+          "400": { "description": "Cannot deactivate yourself or already deactivated" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/clients": {
+      "get": {
+        "tags": ["Clients"],
+        "summary": "Get all clients",
+        "parameters": [
+          { "in": "query", "name": "search", "schema": { "type": "string" }, "description": "Partial match on full_name or email", "example": "Obiageli" }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of clients",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "count": 10,
+                  "data": [{ "id": "660f9500-f39c-42e5-b827-557766550001", "full_name": "Obiageli Ventures Ltd", "email": "obiageli@ventures.com", "client_type": "corporate" }]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      },
+      "post": {
+        "tags": ["Clients"],
+        "summary": "Create a new client",
+        "description": "Requires `senior_partner` or `secretary` role.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["full_name", "email", "phone", "client_type"],
+                "properties": {
+                  "full_name": { "type": "string", "example": "Marcus Johnson" },
+                  "email": { "type": "string", "format": "email", "example": "marcus.j@gmail.com" },
+                  "phone": { "type": "string", "example": "+2348023456789" },
+                  "address": { "type": "string", "example": "7 Awolowo Road, Ikoyi" },
+                  "client_type": { "type": "string", "enum": ["individual", "corporate"], "example": "individual" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Client created" },
+          "400": { "$ref": "#/components/responses/ValidationError" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "409": { "description": "Email already registered" }
+        }
+      }
+    },
+    "/clients/{id}": {
+      "get": {
+        "tags": ["Clients"],
+        "summary": "Get a client by ID",
+        "description": "Returns the client with their associated cases.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" }, "example": "660f9500-f39c-42e5-b827-557766550001" }],
+        "responses": {
+          "200": { "description": "Client with associated cases" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "put": {
+        "tags": ["Clients"],
+        "summary": "Update a client",
+        "description": "Requires `senior_partner` or `secretary` role.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "full_name": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "phone": { "type": "string" },
+                  "address": { "type": "string" },
+                  "client_type": { "type": "string", "enum": ["individual", "corporate"] }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Client updated" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "delete": {
+        "tags": ["Clients"],
+        "summary": "Delete a client",
+        "description": "Requires `senior_partner` role.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "Client deleted" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/cases": {
+      "get": {
+        "tags": ["Cases"],
+        "summary": "Get all cases",
+        "description": "Associates only see cases assigned to them. Senior partners and secretaries see all cases.",
+        "parameters": [
+          { "in": "query", "name": "status", "schema": { "type": "string", "enum": ["Active", "Pending", "In Review", "Urgent", "Closed"] }, "description": "Filter by status" },
+          { "in": "query", "name": "case_type", "schema": { "type": "string", "enum": ["Civil", "Criminal", "Corporate", "Family", "Property"] }, "description": "Filter by case type" },
+          { "in": "query", "name": "search", "schema": { "type": "string" }, "description": "Partial match on title, case ID, or client name" },
+          { "in": "query", "name": "page", "schema": { "type": "integer", "default": 1 } },
+          { "in": "query", "name": "limit", "schema": { "type": "integer", "default": 20 } }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of cases",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "count": 18,
+                  "data": [{ "id": "SLT-001", "title": "Obiageli Ventures Corporate Restructuring", "case_type": "Corporate", "status": "Active", "client_id": "660f9500-f39c-42e5-b827-557766550001", "lawyer_id": "550e8400-e29b-41d4-a716-446655440002" }]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      },
+      "post": {
+        "tags": ["Cases"],
+        "summary": "Create a new case",
+        "description": "Requires `senior_partner` or `secretary` role. Case ID is auto-generated as SLT-XXX.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["title", "case_type", "client_id"],
+                "properties": {
+                  "title": { "type": "string", "example": "Johnson v. Federal Republic of Nigeria" },
+                  "description": { "type": "string", "example": "Criminal appeal against unlawful detention" },
+                  "case_type": { "type": "string", "enum": ["Civil", "Criminal", "Corporate", "Family", "Property"], "example": "Criminal" },
+                  "status": { "type": "string", "enum": ["Active", "Pending", "In Review", "Urgent", "Closed"], "default": "Pending" },
+                  "client_id": { "type": "string", "format": "uuid", "example": "660f9500-f39c-42e5-b827-557766550002" },
+                  "lawyer_id": { "type": "string", "format": "uuid", "nullable": true, "description": "Optional — case can be created unassigned" },
+                  "filed_date": { "type": "string", "format": "date", "example": "2026-03-19" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Case created with auto-generated SLT-XXX ID",
+            "content": {
+              "application/json": {
+                "example": { "success": true, "message": "Case created successfully", "data": { "id": "SLT-019", "title": "Johnson v. Federal Republic of Nigeria", "status": "Pending" } }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      }
+    },
+    "/cases/types": {
+      "get": {
+        "tags": ["Cases"],
+        "summary": "Get all valid case types",
+        "description": "Returns the enum values for `case_type`. Use this to populate dropdowns.",
+        "responses": {
+          "200": {
+            "description": "List of case types",
+            "content": {
+              "application/json": {
+                "example": { "success": true, "data": ["Civil", "Criminal", "Corporate", "Family", "Property"] }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/cases/recent": {
+      "get": {
+        "tags": ["Cases"],
+        "summary": "Get recently updated cases",
+        "description": "Returns last 10 cases ordered by `updated_at` descending. Includes nested client and lawyer. Associates only see their own.",
+        "responses": {
+          "200": { "description": "Recent cases with nested client and lawyer" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/cases/{id}": {
+      "get": {
+        "tags": ["Cases"],
+        "summary": "Get a case by ID",
+        "description": "Returns basic case fields only. Use `/cases/{id}/detail` for full nested data.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-001" }],
+        "responses": {
+          "200": { "description": "Basic case data" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "put": {
+        "tags": ["Cases"],
+        "summary": "Update a case",
+        "description": "Requires `senior_partner` or `secretary` role.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-001" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "description": { "type": "string" },
+                  "case_type": { "type": "string", "enum": ["Civil", "Criminal", "Corporate", "Family", "Property"] },
+                  "client_id": { "type": "string", "format": "uuid" },
+                  "lawyer_id": { "type": "string", "format": "uuid", "nullable": true },
+                  "filed_date": { "type": "string", "format": "date" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Case updated" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "delete": {
+        "tags": ["Cases"],
+        "summary": "Delete a case",
+        "description": "Requires `senior_partner` role.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-001" }],
+        "responses": {
+          "200": { "description": "Case deleted" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/cases/{id}/detail": {
+      "get": {
+        "tags": ["Cases"],
+        "summary": "Get full case detail",
+        "description": "Returns the case with nested `client`, `lawyer`, and `hearings` arrays.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-001" }],
+        "responses": {
+          "200": {
+            "description": "Full case with associations",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "data": {
+                    "id": "SLT-001",
+                    "title": "Obiageli Ventures Corporate Restructuring",
+                    "status": "Active",
+                    "client": { "id": "660f9500-f39c-42e5-b827-557766550001", "full_name": "Obiageli Ventures Ltd", "email": "obiageli@ventures.com" },
+                    "lawyer": { "id": "550e8400-e29b-41d4-a716-446655440002", "full_name": "Emeka Nwosu", "specialty": "Criminal Law" },
+                    "hearings": [{ "id": "770e0400-039d-43f6-9938-668877660004", "hearing_date": "2026-03-16", "court_name": "Federal High Court — Court 5", "urgency": "Orange" }]
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/cases/{id}/assign": {
+      "patch": {
+        "tags": ["Cases"],
+        "summary": "Assign or reassign a lawyer to a case",
+        "description": "Requires `senior_partner` or `secretary` role.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-007" }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["lawyer_id"],
+                "properties": {
+                  "lawyer_id": { "type": "string", "format": "uuid", "example": "550e8400-e29b-41d4-a716-446655440002" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Lawyer assigned" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/cases/{id}/status": {
+      "patch": {
+        "tags": ["Cases"],
+        "summary": "Update case status",
+        "description": "All authenticated users can update status. Setting status to `Closed` automatically sets `closed_date`.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-001" }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["status"],
+                "properties": {
+                  "status": { "type": "string", "enum": ["Active", "Pending", "In Review", "Urgent", "Closed"], "example": "Active" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Status updated" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/cases/{id}/hearings": {
+      "get": {
+        "tags": ["Cases"],
+        "summary": "Get all hearings for a specific case",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string" }, "example": "SLT-001" }],
+        "responses": {
+          "200": { "description": "List of hearings for this case" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/hearings/upcoming": {
+      "get": {
+        "tags": ["Hearings"],
+        "summary": "Get upcoming hearings",
+        "description": "Returns hearings from today onwards, sorted by date ascending (soonest first). Max 10 results.",
+        "responses": {
+          "200": {
+            "description": "Upcoming hearings",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "count": 10,
+                  "data": [{ "id": "770e0400-039d-43f6-9938-668877660001", "case_id": "SLT-013", "hearing_date": "2026-03-20", "court_name": "Lagos High Court — Court 3", "urgency": "Red" }]
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/hearings": {
+      "get": {
+        "tags": ["Hearings"],
+        "summary": "Get all hearings",
+        "parameters": [
+          { "in": "query", "name": "case_id", "schema": { "type": "string" }, "description": "Filter by case ID", "example": "SLT-001" },
+          { "in": "query", "name": "filter", "schema": { "type": "string", "enum": ["upcoming", "this_week"] }, "description": "`upcoming` = future only, `this_week` = next 7 days" }
+        ],
+        "responses": {
+          "200": { "description": "List of hearings" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      },
+      "post": {
+        "tags": ["Hearings"],
+        "summary": "Schedule a new hearing",
+        "description": "Any authenticated user can schedule a hearing. `created_by` is set automatically from the JWT. Hearing date must be today or in the future.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["case_id", "hearing_date"],
+                "properties": {
+                  "case_id": { "type": "string", "example": "SLT-001" },
+                  "hearing_date": { "type": "string", "format": "date", "example": "2026-04-15", "description": "Must be today or a future date" },
+                  "hearing_time": { "type": "string", "example": "09:00" },
+                  "court_name": { "type": "string", "example": "High Court Lagos" },
+                  "notes": { "type": "string", "example": "Bring certified copies of all exhibits" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Hearing scheduled. A confirmation email is sent automatically.",
+            "content": {
+              "application/json": {
+                "example": { "success": true, "message": "Hearing scheduled successfully", "data": { "id": "770e0400-039d-43f6-9938-668877660099", "case_id": "SLT-001", "hearing_date": "2026-04-15", "urgency": "Green" } }
+              }
+            }
+          },
+          "400": { "description": "Past date not allowed or validation error" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/hearings/{id}": {
+      "get": {
+        "tags": ["Hearings"],
+        "summary": "Get a hearing by ID",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "Hearing details" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "put": {
+        "tags": ["Hearings"],
+        "summary": "Update a hearing",
+        "description": "Use to reschedule or record the outcome after the hearing takes place.",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "hearing_date": { "type": "string", "format": "date" },
+                  "hearing_time": { "type": "string" },
+                  "court_name": { "type": "string" },
+                  "notes": { "type": "string" },
+                  "outcome": { "type": "string", "example": "Judgment reserved. Next date set for May 15." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Hearing updated" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      },
+      "delete": {
+        "tags": ["Hearings"],
+        "summary": "Delete a hearing",
+        "parameters": [{ "in": "path", "name": "id", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "Hearing deleted" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/dashboard/stats": {
+      "get": {
+        "tags": ["Dashboard"],
+        "summary": "Get aggregate case statistics",
+        "description": "Returns counts by status and case type. Associates see personal stats only.",
+        "responses": {
+          "200": {
+            "description": "Stats summary",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "data": {
+                    "total": 18,
+                    "by_status": { "Active": 5, "Pending": 4, "In Review": 3, "Urgent": 3, "Closed": 3 },
+                    "by_type": { "Corporate": 6, "Civil": 4, "Criminal": 3, "Family": 3, "Property": 2 }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/dashboard/upcoming-hearings": {
+      "get": {
+        "tags": ["Dashboard"],
+        "summary": "Get upcoming hearings for the dashboard",
+        "description": "Returns the next 10 upcoming hearings sorted by date ascending.",
+        "responses": {
+          "200": { "description": "Upcoming hearings list" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    },
+    "/dashboard/recent-cases": {
+      "get": {
+        "tags": ["Dashboard"],
+        "summary": "Get recently updated cases for the dashboard",
+        "description": "Returns the 10 most recently updated cases.",
+        "responses": {
+          "200": { "description": "Recent cases list" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
+        }
+      }
+    }
+  }
+}

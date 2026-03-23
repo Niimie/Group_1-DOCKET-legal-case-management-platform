@@ -1,0 +1,137 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Inter, sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+Body{
+    background-color: RGBa(13, 27, 42, 1);
+       font-size: 1.6rem;
+}
+
+.hearings {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.urgent-btn{
+    border-radius: 8px;
+    padding: 10px;
+    gap: 10px;
+    background-color: rgba(201, 168, 76, 1);
+}
+
+.tab{
+    display: flex;
+    gap: 2rem;
+    background-color: rgba(15, 34, 54, 1);
+    width: fit-content;
+    padding: 0.2rem;
+    border-radius: 8px;
+}
+
+.active-tab {
+    gap: 2px;
+    color:rgba(201, 168, 76, 1) !important;
+    background-color: rgba(153, 198, 255, 0.23) !important;
+    border-radius: 8px;    
+}
+
+.tabs{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 20px;
+    color: rgba(153, 198, 255, 1);
+}
+
+.card {
+    border: 0.5px solid rgba(0, 167, 228, 1);
+    border-radius: 12px;
+    padding-bottom: 8rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+td, th {
+    border-bottom: 0.5px solid rgba(0, 167, 228, 1);
+}
+
+tr:last-child td {
+    border: none;
+}
+
+th {
+    padding: 3rem 3rem 3rem 2rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+}
+
+.slt {
+    font-size: 1.5rem;
+    color: rgba(201, 168, 76, 1);
+}
+
+.V {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+tr td {
+    padding: 2rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.hearing-flex {
+    line-height: 1.5;
+}
+
+.badge-red {
+    padding: 1rem 2.1rem;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: rgba(224, 82, 82, 1);
+    background-color: rgba(47, 49, 57, 1);
+}
+
+.badge-blue {
+    padding: 1rem 2.1rem;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: rgba(0, 167, 228, 1);
+    background-color: rgba(44, 76, 99, 1);
+}
+
+.badge-urgent {
+    padding: 1rem 2.1rem;
+    background-color: rgba(62, 1, 3, 1);
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: rgba(247, 6, 10, 1);
+}
+
+.badge-active {
+    padding: 1rem 2.1rem;
+    background-color: rgba(40, 64, 37, 1);
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: rgba(52, 199, 89, 1);
+}

@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: inter, sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    width: 100%;
+    background: RGBa(13, 27, 42, 1);
+}
+
+.main {
+    width: 100%;
+    padding: 1rem 2.1rem;
+}
+
+.search-bar {
+    border: 0.5px solid RGBa(0, 167, 228, 1);
+    border-radius: 8px;
+    padding: 0.6rem 0.6rem 0.6rem 2rem;
+    gap: 1.4rem;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.search-bar input {
+    color: white;
+    width: 100rem;
+    min-width: 20rem;
+    flex: 1;
+    border: none;
+    background: transparent;
+}
+
+.search-bar input::placeholder {
+    color: white;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+.section {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.lawyer-container {
+    flex: 1;
+    width: 100%;
+    min-width: 27.05rem;
+    height: fit-content;
+    min-height: 18.6rem;
+    background-color: RGBa(15, 34, 54, 1);
+    border: 0.1px solid RGBa(0, 167, 228, 1);
+    border-radius: 12px;
+    padding: 13px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lawyer-initials {
+    width: 4.6rem;
+    height: 4.6rem;
+    padding: 1rem;
+    font-size: 2rem;
+    background-color: RGBa(33, 48, 56, 1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid RGBa(201, 168, 76, 1);
+}
+
+.lawyer-name {
+    width: 12rem;
+    font-size: 20px;
+    color: white;
+}
+
+.lawyer-case {
+    font-size: 1.5rem;
+    color: RGBa(201, 168, 76, 1);
+}
+
+.active-number {
+    font-size: 14px;
+    color: RGBa(153, 198, 255, 1);
+}
