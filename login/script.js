@@ -58,7 +58,8 @@ form.addEventListener("submit", function (e) {
     return
   }
 
-  alert(`Logged in as ${selectedRole}`)
+  alert(`Logged in as ${selectedRole}`);
+  window.location.href = "../dashboard/dashboard.html";
 })
 
 //document.getElementById("loginForm").addEventListener("submit", function (e) {
