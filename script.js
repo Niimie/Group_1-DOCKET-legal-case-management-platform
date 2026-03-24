@@ -63,7 +63,7 @@ form.addEventListener("submit", function (e) {
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
  e.preventDefault(); // stop reload
-   window.location.href = "../dashboard/dashboard.html";
+   window.location.href = "dashboard/dashboard.html";
 
 
 
