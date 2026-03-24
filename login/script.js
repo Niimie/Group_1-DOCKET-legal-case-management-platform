@@ -61,10 +61,10 @@ form.addEventListener("submit", function (e) {
   alert(`Logged in as ${selectedRole}`)
 })
 
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // stop reload
-    window.location.href = "./dashboard/dashboard.html";
+//document.getElementById("loginForm").addEventListener("submit", function (e) {
+ // e.preventDefault(); // stop reload
+  //  window.location.href = "./dashboard/dashboard.html";
 
 
 
-});
+//});
