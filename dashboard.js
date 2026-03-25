@@ -6,12 +6,13 @@ toggleBtn.addEventListener('click', function() {
     sidebar.classList.toggle('show-sidebar');
 });
 
-// close sidebar when clicking outside of it
+// close sidebar when clicking outside of it //
 document.addEventListener('click', function(e) {
     if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
         sidebar.classList.remove('show-sidebar');
     }
 });
+
 
 // status dropdown // 
 const statuses = [
