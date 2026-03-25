@@ -1,5 +1,3 @@
-// ROLE SELECTION
-
 const roles = document.querySelectorAll(".role")
 let selectedRole = "secretary"
 
@@ -12,21 +10,16 @@ roles.forEach((btn) => {
 })
 
 // PASSWORD TOGGLE
-
 const togglePassword = document.getElementById("togglePassword")
-const password = document.getElementById("password")
+const passwordInput = document.getElementById("password")
 
 togglePassword.addEventListener("click", () => {
-  const type =
-    password.getAttribute("type") === "password"
-      ? "text"
-      : "password"
-
-  password.setAttribute("type", type)
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+  passwordInput.setAttribute("type", type)
+  togglePassword.classList.toggle("ph-eye-slash") // Optional: change icon
 })
 
 // MOBILE PAGE SWITCH
-
 const container = document.querySelector(".container")
 const nextBtn = document.querySelector(".nextBtn")
 const backBtn = document.querySelector(".backBtn")
@@ -43,28 +36,45 @@ if (backBtn) {
   })
 }
 
-// LOGIN FUNCTION
+// LOGIN FUNCTION (MERGED WITH API)
+const loginForm = document.getElementById("loginForm")
 
-const form = document.getElementById("loginForm")
+loginForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault()
-
-  const email = document.getElementById("email").value
-  const password = document.getElementById("password").value
+  const email = document.getElementById("email").value;
+  const password = passwordInput.value;
 
   if (!email || !password) {
-    alert("Please fill all fields")
-    return
+    alert("Please fill all fields");
+    return;
   }
 
-  alert(`Logged in as ${selectedRole}`)
-})
+  // API Configuration
+  const url = "https://docket-backend-tcg1cp-production.up.railway.app/api/auth/login";
 
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // stop reload
-    window.location.href = "../navigation/nav.html";
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
 
+    const result = await response.json();
 
-
+    if (response.ok) {
+      // SAVE TOKEN: Critical for accessing cases later
+      localStorage.setItem('docketToken', result.data.token);
+      
+      // Redirect only after successful API verification
+      window.location.href = "../dashboard/dashboard.html";
+    } else {
+      // Display specific error from ErrorEnvelope
+      alert(`Login Failed: ${result.message}`);
+      console.error("Validation Errors:", result.errors);
+    }
+  } catch (error) {
+    console.error("Network Error:", error);
+    alert("Cannot connect to server. Check your connection.");
+  }
 });

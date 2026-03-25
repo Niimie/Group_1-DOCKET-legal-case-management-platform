@@ -40,8 +40,6 @@ body{
 .btn_1{
     background-color: #c8a94b;
     color: black;
-    /* width: 30px;
-    height: 5px; */
     border-radius: 8px;
     border: none;
     padding: 10px;
@@ -67,17 +65,25 @@ body{
 height: 10px; */
 border-radius: 4px;  
  } 
+
+ .client {
+    width: 100%;
+ }
+
+ .client > * {
+    width: 100%;
+ }
+
  .client_d{
  display: flex;
-flex-direction: row; 
 justify-content: space-between;
- align-items: center;  
+align-items: center;  
 border-bottom:1px solid #a3c4ed;
  padding: 10px; 
  color:white;
+ background-color: #0e2238;
  flex: 1;
- /* width: 100vmax; */
- } 
+} 
  .client{
     background-color: #0e2238;
  } 
@@ -109,18 +115,33 @@ border-bottom:1px solid #a3c4ed;
     outline: none;
  }
 .table_container{
-padding: 10px;
-padding-right: 150px;
-border-radius: 5px;  
- border: 1px solid #1a3554;  
- color: white;
+    width: 100%;
+    border-radius: 5px;  
+    border: 1px solid #1a3554;  
+    color: white;
 }
-table{
+
+.table_container h4  {
+    padding: 1rem;
+}
+
+.client-table{
     width: 100%;
     border-collapse: collapse;
     padding-right: 150px;
 }
-th,td{
+
+.client-table > * {
+    width: 100%;
+    padding: 3rem;
+}
+
+.table_container .client-table tr {
+    width: 100%;
+}
+
+.client-table th,.client-table  td{
+    width: 100%;
     text-align: left;
     padding: 10px;
     border-top: 1px solid #1a3554;
@@ -129,13 +150,14 @@ th,td{
      color: white;
      padding-right: 70px;
 }
-.badge{
+.client-table .badge{
     padding: 4px 10px;
     border-radius: 20px;
      color: #e7c769;
       background-color: #615736;
 }
-.avatar{
+
+.client-table .avatar{
     width: 32px;
     height: 32px;
     border-radius: 50%;

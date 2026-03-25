@@ -19,9 +19,8 @@ body {
     padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(max-content, 8.5rem);
+    grid-auto-rows: minmax(max-content, 10rem);
     gap: 2rem;
-
     grid-template-areas:"profile permissions" "profile permissions" "profile admin" "profile about" "notification about" "notification about" "notification empty" "notification empty";
 }
 
@@ -155,6 +154,7 @@ body {
 
 .permission {
     width: fit-content;
+    height: fit-content;    
     min-width: 10.1rem;
     flex: 1;
     display: flex;
@@ -179,7 +179,7 @@ body {
     justify-content: center;
 }
 
-.admin-container {
+.admin-sect {
     display: flex;
     gap: 1rem;
     grid-area: admin;
@@ -247,7 +247,6 @@ body {
     height: 2.3rem;
     border-radius: 5rem;
     background-color: #213038;
-    position: relative;
     display: flex;
     align-items: center;
 }
@@ -257,15 +256,11 @@ body {
     height: 2.3rem;
     border-radius: 50%;
     background-color: white;
-    position: absolute;
 }
 
-.notification-activate.active {
+.notification-activate.activate{
     background-color: #C9A84C;
-}
-
-.notification-toggle.active {
-    right: 0;
+    justify-content: flex-end;
 }
 
 @media(max-width: 900px) {

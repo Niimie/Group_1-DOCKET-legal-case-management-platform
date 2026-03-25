@@ -8,13 +8,19 @@
 body {
   background: #0d2236;
   color: white;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  transition: transform 0.4s ease;
+
+}
+
+.page {
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -34,6 +40,9 @@ body {
   display: block;
 }
 
+.backup-logo {
+  display: none;
+}
 
 .brand{
   display:flex;
@@ -60,6 +69,7 @@ body {
 .features {
   margin-top: 50px;
   display: flex;
+  align-items: center;
   width: 100%;
   flex-direction: column;
   gap: 22px;
@@ -67,6 +77,7 @@ body {
 
 .feature {
   background: #9ea3a8;
+  width: 100%;
   color: black;
   padding: 16px;
   border-radius: 14px;
@@ -86,14 +97,6 @@ body {
   font-size:18px;
 }
 
-.nextBtn {
-  display: none;
-}
-
-.backBtn {
-  display: none;
-}
-
 /* RIGHT */
 
 .right {
@@ -104,7 +107,7 @@ body {
   height: 100vh;
   background: #0d2236;
 }
-}
+
 .welcome {
   font-size: 36px;
 }
@@ -190,34 +193,18 @@ input {
 
 /* MOBILE */
 
-@media (max-width: 900px) {
-  .container {
-    display: flex;
-    width: 200%;
-    transition: transform 0.4s ease;
+@media (max-width: 1024px) {
+  .left {
+    display: none;
   }
 
-  .page {
-    width: 100%;
-    min-height: 100vh;
+  .right {
+    padding: 10px;
   }
 
-  .nextBtn {
-    margin-top: 40px;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    background: #c9a74b;
-    cursor: pointer;
+  .backup-logo {
     display: block;
-  }
-
-  .backBtn {
+    width: 70px;
     margin-bottom: 20px;
-    border: none;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    display: block;
   }
-
+}

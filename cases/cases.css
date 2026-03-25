@@ -70,12 +70,12 @@ body {
     padding-bottom: 10rem;
 }
 
-table {
+.cases-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+.cases-table tr th, .cases-table tr td {
     border-bottom: 0.5px solid #00A7E4;
 }
 
@@ -84,7 +84,7 @@ tr:last-child td {
     border: none;
 } */
 
-th {
+.cases-table thead th {
     padding: 2rem;
     text-align: left;
     color: white;
@@ -92,44 +92,46 @@ th {
     font-size: 1.4rem;
 }
 
-tbody tr td {
+.cases-table tbody tr td {
     padding: 3rem 3rem 3rem 2rem;
     color: white;
 }
 
-tr > td:nth-child(1) {
+.cases-table tr > td:nth-child(1) {
     font-size: 1.4rem;
     color: #C9A84C;
 }
 
-tr td div {
+.cases-table tr td div {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-tr td div h4 {
+.cases-table tr td div h4 {
     color: white;
     font-size: 1.5rem;
     font-weight: 400;
 }
 
-tr td div p {
+.cases-table tr td div p {
     color: #99C6FF;
     font-size: 1.4rem;
 }
 
-.case-active {
+.cases-table tr .case-active {
     background-color: #284025;
     border: none;
     outline: none;
+    min-width: fit-content;
     padding: 0.5rem 1rem;
     border-radius: 16px;
     color: white;
 }
 
-.case-urgent {
+.cases-table tr .case-urgent {
     background-color: #990003;
+    min-width: fit-content;
     border: none;
     outline: none;
     padding: 0.5rem 1rem;
@@ -137,24 +139,30 @@ tr td div p {
     color: white;
 }
 
-.urgent-date {
+.cases-table .urgent-date {
     color: #FF383C; 
 }
 
-.case-pending {
+.cases-table .case-pending {
     background-color: #862F01;
     border: none;
     outline: none;
+    min-width: fit-content;
     padding: 0.5rem 1rem;
     border-radius: 16px;
     color: white;
 }
 
-.case-in-review {
+.cases-table .case-in-review {
     border: none;
+    width: 10rem;
     outline: none;
     padding: 0.5rem 1rem;
     border-radius: 16px;
     background-color: #253140;
     color: #0088FF;
+}
+
+section.active {
+    display: block;
 }

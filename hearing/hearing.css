@@ -9,16 +9,16 @@ html{
     font-size: 62.5%;
 }
 
-Body{
+body{
     background-color: RGBa(13, 27, 42, 1);
        font-size: 1.6rem;
 }
 
-.hearings {
+.hearings-section {
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
 }
 .header{
     display: flex;
@@ -65,46 +65,48 @@ Body{
     padding-bottom: 8rem;
 }
 
-table {
+.hearing-table {
     width: 100%;
     border-collapse: collapse;
     overflow-x: auto;
 }
 
-td, th {
+.hearing-table td, th {
     border-bottom: 0.5px solid rgba(0, 167, 228, 1);
 }
 
-tr:last-child td {
+.hearing-table tr:last-child td {
     border: none;
 }
 
-th {
+.hearing-table th {
     padding: 3rem 3rem 3rem 2rem;
     text-align: left;
     color: rgba(255, 255, 255, 1);
 }
 
-.slt {
+.hearing-table .slt {
     font-size: 1.5rem;
     color: rgba(201, 168, 76, 1);
 }
 
-.V {
+.hearing-table .V {
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 1);
 }
 
-tr td {
+.hearing-table tr td {
     padding: 2rem;
     color: rgba(255, 255, 255, 1);
 }
 
-.hearing-flex {
+.hearing-table .hearing-flex {
     line-height: 1.5;
 }
 
-.badge-red {
+.hearing-table .badge-red {
+    display: inline-block;
+    width: 10rem;
     padding: 1rem 2.1rem;
     border-radius: 12px;
     font-size: 1.5rem;
@@ -112,7 +114,9 @@ tr td {
     background-color: rgba(47, 49, 57, 1);
 }
 
-.badge-blue {
+.hearing-table .badge-blue {
+    display: inline-block;
+    width: 10rem;
     padding: 1rem 2.1rem;
     border-radius: 12px;
     font-size: 1.5rem;
@@ -120,7 +124,9 @@ tr td {
     background-color: rgba(44, 76, 99, 1);
 }
 
-.badge-urgent {
+.hearing-table .badge-urgent {
+    display: inline-block;
+    width: 11rem;
     padding: 1rem 2.1rem;
     background-color: rgba(62, 1, 3, 1);
     border-radius: 12px;
@@ -128,7 +134,10 @@ tr td {
     color: rgba(247, 6, 10, 1);
 }
 
-.badge-active {
+.hearing-table .badge-active {
+    display: inline-block;
+    width: 11rem;
+    min-width: fit-content;
     padding: 1rem 2.1rem;
     background-color: rgba(40, 64, 37, 1);
     border-radius: 12px;

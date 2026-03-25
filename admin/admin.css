@@ -39,7 +39,7 @@ body {
 }
 
 .user-number {
-    color: #0D99FF;
+    color: #0D99FF !important;
 }
 
 .info-label {
@@ -48,11 +48,11 @@ body {
 }
 
 .active-cases {
-    color: #34C759;
+    color: #34C759 !important;
 }
 
 .inactive-cases {
-    color: #FF383C;
+    color: #FF383C !important;
 }
 
 .members {
@@ -157,7 +157,7 @@ th {
 }
 
 .senior-partner {
-    width: fit-content;
+    width: 15.6rem;
     height: 2.7rem;
     padding: 0.3rem 2.1rem;
     border-radius: 16px;
@@ -200,7 +200,7 @@ th {
     color: #FFFFFF99;
 }
 
-.active {
+.admin-active {
     padding: 1.2rem;
     width: fit-content;
     border-radius: 20px;
@@ -212,7 +212,8 @@ th {
     justify-content: center;
 }
 
-.inactive {
+
+.admin-inactive {
     padding: 1.2rem;
     width: fit-content;
     border-radius: 20px;
@@ -254,6 +255,7 @@ th {
 .edit-btn {
     background: transparent;
     outline: none;
+    width: 15.5rem;
     border: 2px solid #C9A84C;
     padding: 1rem 1.2rem;
     border-radius: 10px;

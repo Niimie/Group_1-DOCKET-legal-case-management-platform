@@ -1,337 +1,1257 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Docket-Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-    <link rel="stylesheet" href="../navigation/client.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-------Side-Bar-------->
-      <aside class="side-bar">
-        <div class="firm-name">
-          <h2 class="name">
-            Mex-Trial &amp; <br />
-            Associates
-          </h2>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docket-Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./dashboard.css" />
+  <link rel="stylesheet" href="../cases/cases.css" />
+  <link rel="stylesheet" href="../navigation/client.css" />
+  <link rel="stylesheet" href="../hearing/hearing.css" />
+  <link rel="stylesheet" href="../lawyer/lawyer.css" />
+  <link rel="stylesheet" href="../admin/admin.css" />
+  <link rel="stylesheet" href="../admin2/admin2.css" />
+  <link rel="stylesheet" href="../settings/settings.css" />
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <!-------Side-Bar-------->
+    <aside class="side-bar">
+      <div class="firm-name">
+        <h2 class="name">
+          Mex-Trial &amp; <br />
+          Associates
+        </h2>
+      </div>
+
+
+
+      <nav class="side-bar-nav">
+        <div class="main-menus">
+          <p class="menu">Main Menu</p>
         </div>
 
-        
+        <ul class="nav-lists">
+          <li class="nav-list lists">
+            <i class="ph ph-squares-four"></i>
+            <p class="nav-list-link">Dashboard</p>
+            <div class="rbadge">1</div>
+          </li>
 
-        <nav class="side-bar-nav">
-          <div class="main-menus">
-            <p class="menu">Main Menu</p>
-          </div>
+          <li class="lists">
+            <i class="ph ph-scales"></i><a href="#" class="nav-list-link">Cases</a>
+          </li>
 
-          <ul class="nav-lists">
-            <li class="nav-list">
-              <i class="ph ph-squares-four"></i>
-              <p class="nav-text">Dashboard</p>
-              <div class="rbadge">1</div> 
-            </li>
+          <li class="lists">
+            <i class="ph ph-users"></i><a href="#" class="nav-list-link">Clients</a>
+          </li>
 
-            <li class="lists">
-              <i class="ph ph-scales"></i
-              ><a href="#" class="nav-list-link">Cases</a>
-            </li>
+          <li class="lists">
+            <i class="ph ph-calendar-dots"></i><a href="#" class="nav-list-link">Hearings</a>
+          </li>
 
-            <li class="lists">
-              <i class="ph ph-users"></i
-              ><a href="#" class="nav-list-link">Clients</a>
-            </li>
+          <li class="lists">
+            <i class="ph ph-calendar-blank"></i><a href="#" class="nav-list-link">Lawyers</a>
+          </li>
+        </ul>
 
-            <li class="lists">
-              <i class="ph ph-calendar-dots"></i
-              ><a href="#" class="nav-list-link">Hearings</a>
-            </li>
+        <div class="admins">
+          <p class="admin">Admin</p>
+          <ul class="admin-links lists">
+            <li class="admin-link">
+              <i class="ph ph-shield-checkered"></i>
+              <p class="admin-link-txt">Admin Portal</p>
+              <a href="#" class="admin-btn">Admin</a>
 
-            <li class="lists">
-              <i class="ph ph-calendar-blank"></i
-              ><a href="#" class="nav-list-link">Lawyers</a>
             </li>
           </ul>
-
-          <div class="admins">
-            <p class="admin">Admin</p>
-            <ul class="admin-links">
-              <li class="admin-link">
-                <i class="ph ph-shield-checkered"></i>
-                <p class="admin-link-txt">Admin Portal</p>
-                <a href="#" class="admin-btn">Admin</a>
-                
-              </li>
-            </ul>
-          </div>
-
-          <div class="accounts">
-            <h3 class="admin">Account</h3>
-            <ul class="acct-links">
-              <li class="acct-link">
-                <i class="ph ph-gear"></i
-                ><a href="#" class="nav-list-link"> Settings</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </aside>
-
-      <!-------Top-Bar-------->
-      <div class="main-header">
-        <button class="toggle-btn"><i class="ph ph-list"></i></button>
-
-        <header class="top-bars">
-          <div class="top-barleft">
-            <h1 class="dash-name">Dashboard</h1>
-            <p class="welcome">Welcome back, John</p>
-          </div>
-          <button class="dash-btn"><i class="ph ph-plus"></i> New Case</button>
-
-        </header>
-
-
-        <!------------------Case Cards----------------------->
-        <div class="case-cards">
-          <div class="cards">
-            <div class="card-top">
-              <p class="case-stats">TOTAL CASES</p>
-              <i class="ph ph-scales card-icon ia"></i>
-            </div>
-            <h3 class="case-num">8</h3>
-            <p class="sub-no">+ 2 this month</p>
-          </div>
-          
-          <div class="cards">
-            <div class="card-top">
-              <p class="case-stats">ACTIVE CASES</p>
-              <i class="ph ph-squares-four card-icon ib"></i>
-            </div>
-            <h3 class="case-num">5</h3>
-            <p class="sub-no">1 urgent</p>
-          </div>
-          
-          <div class="cards">
-            <div class="card-top">
-              <p class="case-stats">PENDING</p>
-              <i class="ph ph-clock card-icon ic"></i>
-            </div>
-            <h3 class="case-num">1</h3>
-            <p class="sub-no">Awaiting action</p>
-          </div>
-          
-          <div class="cards">
-            <div class="card-top">
-              <p class="case-stats">HEARING THIS WEEK</p>
-              <i class="ph ph-calendar-check card-icon id"></i>
-            </div>
-            <h3 class="case-num">1</h3>
-            <p class="sub-no">Next 7 days</p>
-          </div>
         </div>
 
-        <!--------------------------Recent cases Row--------------------------------->
-        <div class="recents-cases-wrapper">
-          <div class="recent-case">
-            <div class="case-head">
-              <h3 class="case-title-t">Recent Cases</h3>
-              <a href="#" class="case-link">View all <i class="ph-bold ph-arrow-right"></i></a>
-            </div>
-          
-
-
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>CASES</th>
-                    <th>CLIENTS</th>
-                    <th>LAWYERS</th>
-                    <th>STATUS</th>
-                    <th>HEARING</th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-                  <tr>
-                    <td>
-                      <p class="case-id">SLT-001</p>
-                      <p class="case-title">Obi v. First Bank Nigeria</p>
-                      <p class="case-type">Civil Litigation</p>
-                    </td>
-                    <td>Marcus Obi</td>
-                    <td>Adaeze Okafor</td>
-                    <td>
-                      <div class="case-status ba">
-                        <p class="status-txt">Active</p>
-                      </div>
-                    </td>
-                    <td class="case-date">12 March 2026</td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <p class="case-id">SLT-002</p>
-                      <p class="case-title">State v. Danladi Emmanuel</p>
-                      <p class="case-type">Criminal Law</p>
-                    </td>
-                    <td>Danladi Emmanuel</td>
-                    <td>Adaeze Okafor</td>
-                    <td>
-                      <div class="case-status bb">
-                        <p class="status-txt">Urgent</p>
-                      </div>
-                    </td>
-                    <td class="case-date">7 March 2026</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="case-id">SLT-003</p>
-                      <p class="case-title">Adewale Divorce Proceedings</p>
-                      <p class="case-type">Family Law</p>
-                    </td>
-                    <td>Bola Adewale</td>
-                    <td>Fatima Al-Hassan</td>
-                    <td>
-                      <div class="case-status bc">
-                        <p class="status-txt">Pending</p>
-                      </div>
-                    </td>
-                    <td class="case-date">15 March 2026</td>
-                  </tr>
-                  
-                  <tr>
-                    <td>
-                      <p class="case-id">SLT-004</p>
-                      <p class="case-title">Chukwu Estates Dispute</p>
-                      <p class="case-type">Property Law</p>
-                    </td>
-                    <td>Ify Chukwu</td>
-                    <td>Ngozi Eze</td>
-                    <td>
-                      <div class="case-status bd">
-                        <p class="status-txt">In Review</p>
-                      </div>
-                    </td>
-                    <td class="case-date">18 March 2026</td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <p class="case-id">SLT-005</p>
-                      <p class="case-title">Okonkwo Property</p>
-                      <p class="case-type">Property Law</p>
-                    </td>
-                    <td>Ify Chukwu</td>
-                    <td>Ngozi Eze</td>
-                    <td>
-                      <div class="case-status be">
-                        <p class="status-txt">Active</p>
-                      </div>
-                    </td>
-                    <td class="case-date">18 March 2026</td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>
-
-          </div>
-          
-          <!---------------------upcoming hearings--------------------->
-           <aside class="hearing-side">
-            <div class="hearing-head">
-              <h3 class="hearing-title">Upcoming Hearings</h3>
-              <a href="#" class="hearing-link">Calendar <i class="ph ph-arrow-right"></i></a>
-            </div>
-            
-            <div class="hearing-list">
-              <div class="hearings">
-                <div class="hearing-db">
-                  <p class="hearing-day">7</p>
-                  <p class="hearing-month">MAR</p>
-                </div>
-                
-                <div class="hearing-info">
-                  <p class="hearing-title">State V. Danladi Emmanuel</p>
-                  <p class="hearing-sub">Adaeze Okafor - Criminal Law</p>
-                </div>
-                
-                <div class="hdays">
-                  <p class="day1">3d</p>
-                </div>
-              </div>
-              
-              <div class="hearings">
-                <div class="hearing-db">
-                  <p class="hearing-day">12</p>
-                  <p class="hearing-month">MAR</p>
-                </div>
-                
-                <div class="hearing-info">
-                  <p class="hearing-title">Obi V. First Bank Nigeria</p>
-                  <p class="hearing-sub">Adaeze Okafor - Civil Litigation</p>
-                </div>
-                <div class="hdays">
-                  <p class="day2">8d</p>
-                </div>
-              </div>
-              
-              <div class="hearings">
-                <div class="hearing-db">
-                  <p class="hearing-day">15</p>
-                  <p class="hearing-month">MAR</p>
-                </div>
-                <div class="hearing-info">
-                  <p class="hearing-title">Adewale Divorce Proceedings</p>
-                  <p class="hearing-sub">Fatima Al-Hassan - Family Law</p>
-                </div>
-                
-                <div class="hdays">
-                  <p class="day3">11d</p>
-                </div>
-              </div>
-              
-              <div class="hearings">
-                <div class="hearing-db">
-                  <p class="hearing-day">18</p>
-                  <p class="hearing-month">MAR</p>
-                </div>
-                <div class="hearing-info">
-                  <p class="hearing-title">Chukwu Estates Dispute</p>
-                  <p class="hearing-sub">Ngozi Eze - Property Law</p>
-                </div>
-                <div class="hdays">
-                  <p class="day4">14d</p>
-                </div>
-              </div>
-              
-              <div class="hearings">
-                <div class="hearing-db">
-                  <p class="hearing-day">27</p>
-                  <p class="hearing-month">MAR</p>
-                </div>
-                <div class="hearing-info">
-                  <p class="hearing-title">Okonkwo Property</p>
-                  <p class="hearing-sub">Ngozi Eze - Property Law</p>
-                </div>
-                <div class="hdays">
-                  <p class="day5">23d</p>
-                </div>
-              </div>
-            </div>
-          </aside>
+        <div class="accounts">
+          <h3 class="admin">Account</h3>
+          <ul class="acct-links">
+            <li class="acct-link lists">
+              <i class="ph ph-gear"></i><a href="#" class="nav-list-link">Settings</a>
+            </li>
+          </ul>
         </div>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+
+      <div class="sticky-nav">
+        <div>
+          <h3>Clients</h3>
+          <p>Client directory</p>
+        </div>
+        <div><button class="btn_1">+ New Case</button></a>
+        </div>
+        <but ton class="toggle-btn"><i class="ph ph-list"></i></button>
       </div>
-    </div>
-  <script src="dashboard.js"></script>
 
+      <section class="dashboard visible direct">
+        <!-------Top-Bar-------->
+        <div class="main-header">
+
+          <header class="top-bars">
+            <div class="top-barleft">
+              <h1 class="dash-name">Dashboard</h1>
+              <p class="welcome">Welcome back, John</p>
+            </div>
+            <button class="dash-btn"><i class="ph ph-plus"></i> New Case</button>
+
+          </header>
+
+
+          <!------------------Case Cards----------------------->
+          <div class="case-cards">
+            <div class="cards">
+              <div class="card-top">
+                <p class="case-stats">TOTAL CASES</p>
+                <i class="ph ph-scales card-icon ia"></i>
+              </div>
+              <h3 class="case-num">8</h3>
+              <p class="sub-no">+ 2 this month</p>
+            </div>
+
+            <div class="cards">
+              <div class="card-top">
+                <p class="case-stats">ACTIVE CASES</p>
+                <i class="ph ph-squares-four card-icon ib"></i>
+              </div>
+              <h3 class="case-num">5</h3>
+              <p class="sub-no">1 urgent</p>
+            </div>
+
+            <div class="cards">
+              <div class="card-top">
+                <p class="case-stats">PENDING</p>
+                <i class="ph ph-clock card-icon ic"></i>
+              </div>
+              <h3 class="case-num">1</h3>
+              <p class="sub-no">Awaiting action</p>
+            </div>
+
+            <div class="cards">
+              <div class="card-top">
+                <p class="case-stats">HEARING THIS WEEK</p>
+                <i class="ph ph-calendar-check card-icon id"></i>
+              </div>
+              <h3 class="case-num">1</h3>
+              <p class="sub-no">Next 7 days</p>
+            </div>
+          </div>
+
+          <!--------------------------Recent cases Row--------------------------------->
+          <div class="recents-cases-wrapper">
+            <div class="recent-case">
+              <div class="case-head">
+                <h3 class="case-title-t">Recent Cases</h3>
+                <a href="#" class="case-link">View all <i class="ph-bold ph-arrow-right"></i></a>
+              </div>
+
+
+
+              <div class="table-wrap">
+                <table class="recent-table">
+                  <thead>
+                    <tr>
+                      <th>CASES</th>
+                      <th>CLIENTS</th>
+                      <th>LAWYERS</th>
+                      <th>STATUS</th>
+                      <th>HEARING</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p class="case-id">SLT-001</p>
+                        <p class="case-title">Obi v. First Bank Nigeria</p>
+                        <p class="case-type">Civil Litigation</p>
+                      </td>
+                      <td>Marcus Obi</td>
+                      <td>Adaeze Okafor</td>
+                      <td>
+                        <div class="case-status ba">
+                          <p class="status-txt">Active</p>
+                        </div>
+                      </td>
+                      <td class="case-date">12 March 2026</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p class="case-id">SLT-002</p>
+                        <p class="case-title">State v. Danladi Emmanuel</p>
+                        <p class="case-type">Criminal Law</p>
+                      </td>
+                      <td>Danladi Emmanuel</td>
+                      <td>Adaeze Okafor</td>
+                      <td>
+                        <div class="case-status bb">
+                          <p class="status-txt">Urgent</p>
+                        </div>
+                      </td>
+                      <td class="case-date">7 March 2026</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="case-id">SLT-003</p>
+                        <p class="case-title">Adewale Divorce Proceedings</p>
+                        <p class="case-type">Family Law</p>
+                      </td>
+                      <td>Bola Adewale</td>
+                      <td>Fatima Al-Hassan</td>
+                      <td>
+                        <div class="case-status bc">
+                          <p class="status-txt">Pending</p>
+                        </div>
+                      </td>
+                      <td class="case-date">15 March 2026</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p class="case-id">SLT-004</p>
+                        <p class="case-title">Chukwu Estates Dispute</p>
+                        <p class="case-type">Property Law</p>
+                      </td>
+                      <td>Ify Chukwu</td>
+                      <td>Ngozi Eze</td>
+                      <td>
+                        <div class="case-status bd">
+                          <p class="status-txt">In Review</p>
+                        </div>
+                      </td>
+                      <td class="case-date">18 March 2026</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p class="case-id">SLT-005</p>
+                        <p class="case-title">Okonkwo Property</p>
+                        <p class="case-type">Property Law</p>
+                      </td>
+                      <td>Ify Chukwu</td>
+                      <td>Ngozi Eze</td>
+                      <td>
+                        <div class="case-status be">
+                          <p class="status-txt">Active</p>
+                        </div>
+                      </td>
+                      <td class="case-date">18 March 2026</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
+            <!---------------------upcoming hearings--------------------->
+            <aside class="hearing-side">
+              <div class="hearing-head">
+                <h3 class="hearing-title">Upcoming Hearings</h3>
+                <a href="#" class="hearing-link">Calendar <i class="ph ph-arrow-right"></i></a>
+              </div>
+
+              <div class="hearing-list">
+                <div class="hearings">
+                  <div class="hearing-db">
+                    <p class="hearing-day">7</p>
+                    <p class="hearing-month">MAR</p>
+                  </div>
+
+                  <div class="hearing-info">
+                    <p class="hearing-title">State V. Danladi Emmanuel</p>
+                    <p class="hearing-sub">Adaeze Okafor - Criminal Law</p>
+                  </div>
+
+                  <div class="hdays">
+                    <p class="day1">3d</p>
+                  </div>
+                </div>
+
+                <div class="hearings">
+                  <div class="hearing-db">
+                    <p class="hearing-day">12</p>
+                    <p class="hearing-month">MAR</p>
+                  </div>
+
+                  <div class="hearing-info">
+                    <p class="hearing-title">Obi V. First Bank Nigeria</p>
+                    <p class="hearing-sub">Adaeze Okafor - Civil Litigation</p>
+                  </div>
+                  <div class="hdays">
+                    <p class="day2">8d</p>
+                  </div>
+                </div>
+
+                <div class="hearings">
+                  <div class="hearing-db">
+                    <p class="hearing-day">15</p>
+                    <p class="hearing-month">MAR</p>
+                  </div>
+                  <div class="hearing-info">
+                    <p class="hearing-title">Adewale Divorce Proceedings</p>
+                    <p class="hearing-sub">Fatima Al-Hassan - Family Law</p>
+                  </div>
+
+                  <div class="hdays">
+                    <p class="day3">11d</p>
+                  </div>
+                </div>
+
+                <div class="hearings">
+                  <div class="hearing-db">
+                    <p class="hearing-day">18</p>
+                    <p class="hearing-month">MAR</p>
+                  </div>
+                  <div class="hearing-info">
+                    <p class="hearing-title">Chukwu Estates Dispute</p>
+                    <p class="hearing-sub">Ngozi Eze - Property Law</p>
+                  </div>
+                  <div class="hdays">
+                    <p class="day4">14d</p>
+                  </div>
+                </div>
+
+                <div class="hearings">
+                  <div class="hearing-db">
+                    <p class="hearing-day">27</p>
+                    <p class="hearing-month">MAR</p>
+                  </div>
+                  <div class="hearing-info">
+                    <p class="hearing-title">Okonkwo Property</p>
+                    <p class="hearing-sub">Ngozi Eze - Property Law</p>
+                  </div>
+                  <div class="hdays">
+                    <p class="day5">23d</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="cases direct">
+        <div class="accessibility">
+          <div class="search-accessibility">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22.1333 24L13.7333 15.6C13.0667 16.1333 12.3 16.5556 11.4333 16.8667C10.5667 17.1778 9.64445 17.3333 8.66667 17.3333C6.24445 17.3333 4.19467 16.4942 2.51733 14.816C0.840001 13.1378 0.000889594 11.088 7.05467e-07 8.66667C-0.000888183 6.24533 0.838223 4.19556 2.51733 2.51733C4.19645 0.839111 6.24622 0 8.66667 0C11.0871 0 13.1373 0.839111 14.8173 2.51733C16.4973 4.19556 17.336 6.24533 17.3333 8.66667C17.3333 9.64444 17.1778 10.5667 16.8667 11.4333C16.5556 12.3 16.1333 13.0667 15.6 13.7333L24 22.1333L22.1333 24ZM8.66667 14.6667C10.3333 14.6667 11.7502 14.0836 12.9173 12.9173C14.0844 11.7511 14.6676 10.3342 14.6667 8.66667C14.6658 6.99911 14.0827 5.58267 12.9173 4.41733C11.752 3.252 10.3351 2.66844 8.66667 2.66667C6.99822 2.66489 5.58178 3.24844 4.41733 4.41733C3.25289 5.58622 2.66933 7.00267 2.66667 8.66667C2.664 10.3307 3.24756 11.7476 4.41733 12.9173C5.58711 14.0871 7.00356 14.6702 8.66667 14.6667Z"
+                fill="#0D99FF" />
+            </svg>
+
+            <input type="search" placeholder="Search cases, clients, ID's..." />
+          </div>
+
+          <button class="status-accessibility">All Statuses <svg width="10" height="5" viewBox="0 0 10 5" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0L5 5L10 0H0Z" fill="#0D99FF" />
+            </svg>
+          </button>
+
+          <button class="all-type-accessibility">All types <svg width="10" height="5" viewBox="0 0 10 5" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0L5 5L10 0H0Z" fill="#0D99FF" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="cases-info">
+
+          <table class="cases-table">
+            <thead>
+              <tr>
+                <th>CASE ID</th>
+                <th>CASES TITLE</th>
+                <th>CLIENT</th>
+                <th>LAWYER</th>
+                <th>STATUS</th>
+                <th>NEXT HEARING</th>
+                <th>FILED</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>SLT-001</td>
+                <td>
+                  <div>
+                    <h4>Obi v. First Bank Nigeria</h3>
+                      <p>Civic Litigation</p>
+                  </div>
+                </td>
+                <td>Marcus Obi</td>
+                <td>Adaeze Okafor</td>
+                <td>
+                  <button class="case-active"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                        fill="#34C759" />
+                    </svg> &nbsp;Active
+                  </button>
+                </td>
+                <td>12 Mar 2026</td>
+                <td>4 Nov 2025</td>
+              </tr>
+
+              <tr>
+                <td>SLT-002</td>
+                <td>
+                  <div>
+                    <h4>State v. Danladi Emmanuel</h3>
+                      <p>Criminal Law</p>
+                  </div>
+                </td>
+                <td>Danladi Emmanuel</td>
+                <td>Adaeze Okafor</td>
+                <td>
+                  <button class="case-urgent"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                        fill="#FF383C" />
+                    </svg>
+
+                    </svg> &nbsp;Urgent
+                  </button>
+                </td>
+                <td class="urgent-date">7 Mar 2026</td>
+                <td>15 Nov 2025</td>
+              </tr>
+
+              <tr>
+                <td>SLT-003</td>
+                <td>
+                  <div>
+                    <h4>Chukwu Estates Dispute</h4>
+                    <p>Property Law</p>
+                  </div>
+                </td>
+                <td>Ify Chukwu</td>
+                <td>Ngozi Eze</td>
+                <td>
+                  <button class="case-in-review"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                        fill="#0088FF" />
+                    </svg>
+                    &nbsp;In review
+                  </button>
+                </td>
+                <td>18 Mar 2026</td>
+                <td>10 Jan 2025</td>
+              </tr>
+
+              <tr>
+                <td>SLT-004</td>
+                <td>
+                  <div>
+                    <h4>Adewale Divorce Proceedings</h4>
+                    <p>Family Law</p>
+                  </div>
+                </td>
+                <td>Bola Adewale</td>
+                <td>Fatima Al-Hassan</td>
+                <td>
+                  <button class="case-pending"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
+                        fill="#FF8D28" />
+                    </svg>
+                    &nbsp;Pending
+                  </button>
+                </td>
+                <td>15 Mar 2026</td>
+                <td>22 Jan 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="client direct">
+        <div class="search">
+          <div class="search_i">
+            <i class="ph-bold ph-magnifying-glass"></i>
+            <input type="text" placeholder="Search clients...">
+          </div>
+          <div>
+            <a href="New_client.html" class="btn_2">Add client</a>
+          </div>
+        </div>
+
+        <div class="table_container">
+          <h4> 5 Clients</h4>
+          <table class="client-table">
+            <tr>
+              <th>Client</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Cases</th>
+              <th>Joined</th>
+            </tr>
+            <tr>
+              <td><span class="avatar">JM</span>John Mercy</td>
+              <td>johnM@gmail.com</td>
+              <td>08082738591</td>
+              <td><span class="badge">1</span></td>
+              <td>13 Mar 2026</td>
+            </tr>
+            <tr>
+              <td><span class="avatar">CE</span>Collins Ettu</td>
+              <td>Ettu23@gmail.com</td>
+              <td>08123456789</td>
+              <td><span class="badge">3</span></td>
+              <td>20 Jan 2026</td>
+            </tr>
+            <tr>
+              <td><span class="avatar">ML</span>Mark Luke</td>
+              <td>lotu23@gmail.com</td>
+              <td>08123456789</td>
+              <td><span class="badge">2</span></td>
+              <td>10 Dec 2025</td>
+            </tr>
+            <tr>
+              <td><span class="avatar">NT</span>Nwoke Titus</td>
+              <td>Titu23@gmail.com</td>
+              <td>08120921789</td>
+              <td><span class="badge">5</span></td>
+              <td>20 Oct 2025</td>
+            </tr>
+            <tr>
+              <td><span class="avatar">MP</span>Mgbe Precious</td>
+              <td>Preshy23@gmail.com</td>
+              <td>09023456789</td>
+              <td><span class="badge">3</span></td>
+              <td>12 Aug 2025</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="hearings-section direct">
+        <!--TABS-->
+        <div class="tab">
+          <button class="tabs active-tab">All Upcoming</button>
+          <button class="tabs">This week {1}</button>
+          <button class="tabs">All Cases</button>
+        </div>
+        <!--CARDS-->
+        <div class="card">
+
+          <table class="hearing-table">
+            <!--TABLE HEADER-->
+            <thead>
+              <tr>
+                <th class="card-title" colspan="6">Court Dates & Hearing</th>
+              </tr>
+
+              <tr>
+                <th>CASE</th>
+                <th>CLIENT</th>
+                <th>LAWYER</th>
+                <th>HEARING DATES</th>
+                <th>DAYS UNTIL</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <!--TABLE BODY-->
+            <tbody>
+              <tr>
+                <td class="hearing-flex">
+                  <p class="slt">SLT-002</p>
+                  <P class="V">State V. Dalandi Emmanuel</P>
+                </td>
+                <td>Dalandi Emmanuel</td>
+                <td>Adaeze Okafor</td>
+                <td>7 Mar 2026</td>
+                <td><span class="badge-red">3 days</span></td>
+                <td><span class="badge-urgent"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="4" cy="4" r="4" fill="#F7060A" />
+                    </svg>
+                    &nbsp;Urgent</span></td>
+              </tr>
+
+              <tr>
+                <td class="hearing-flex">
+                  <p class="slt">SLT-001</p>
+                  <p class="V">Obi V. First Bank Nigeria</p>
+                </td>
+                <td>Marcus Obi</td>
+                <td>Adaeze Okafor</td>
+                <td>12 Mar, 2026</td>
+                <td><span class="badge-blue">8 days</span></td>
+                <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="4" cy="4" r="4" fill="#34C759" />
+                    </svg>
+                    &nbsp;Active</span></td>
+              </tr>
+
+              <tr>
+                <td class="hearing-flex">
+                  <p class="slt">SLT-004</p>
+                  <p class="V">Adewale Divorce Proceedings</p>
+                </td>
+                <td>Bola Adewale</td>
+                <td>Fatima Al-Hassan</td>
+                <td>15 Mar 2026</td>
+                <td><span class="badge-blue">11 days</span></td>
+                <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="4" cy="4" r="4" fill="#34C759" />
+                    </svg>
+                    &nbsp;Active</span></td>
+              </tr>
+
+              <tr>
+                <td class="hearing-flex">
+                  <p class="slt">SLT-007</p>
+                  <P class="V">Okonkwo Property Trasfer</P>
+                </td>
+                <td>Emeka Okonkwo</td>
+                <td>Ngozi Eze</td>
+                <td>18 Mar 2026</td>
+                <td><span class="badge-blue">14 days</span></td>
+                <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="4" cy="4" r="4" fill="#34C759" />
+                    </svg>
+                    &nbsp;Active</span></td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </section>
+
+      <section class="lawyer direct">
+
+        <div class="search-bar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22.1333 24L13.7333 15.6C13.0667 16.1333 12.3 16.5556 11.4333 16.8667C10.5667 17.1778 9.64445 17.3333 8.66667 17.3333C6.24445 17.3333 4.19467 16.4942 2.51733 14.816C0.840001 13.1378 0.000889594 11.088 7.05467e-07 8.66667C-0.000888183 6.24533 0.838223 4.19556 2.51733 2.51733C4.19645 0.839111 6.24622 0 8.66667 0C11.0871 0 13.1373 0.839111 14.8173 2.51733C16.4973 4.19556 17.336 6.24533 17.3333 8.66667C17.3333 9.64444 17.1778 10.5667 16.8667 11.4333C16.5556 12.3 16.1333 13.0667 15.6 13.7333L24 22.1333L22.1333 24ZM8.66667 14.6667C10.3333 14.6667 11.7502 14.0836 12.9173 12.9173C14.0844 11.7511 14.6676 10.3342 14.6667 8.66667C14.6658 6.99911 14.0827 5.58267 12.9173 4.41733C11.752 3.252 10.3351 2.66844 8.66667 2.66667C6.99822 2.66489 5.58178 3.24844 4.41733 4.41733C3.25289 5.58622 2.66933 7.00267 2.66667 8.66667C2.664 10.3307 3.24756 11.7476 4.41733 12.9173C5.58711 14.0871 7.00356 14.6702 8.66667 14.6667Z"
+              fill="#0D99FF" />
+          </svg>
+
+          <input type="search" placeholder="Search for lawyer...." id="search">
+        </div>
+
+        <div class="section">
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">AO</h2>
+            <h2 class="lawyer-name">Adaeze Okafor</h2>
+            <p class="lawyer-case">Civil Litigation</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">FA</h2>
+            <h2 class="lawyer-name">Fatima Al-Hassan</h2>
+            <p class="lawyer-case">Family Law</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">NE</h2>
+            <h2 class="lawyer-name">Ngozi Eze</h2>
+            <p class="lawyer-case">Property Law</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">TB</h2>
+            <h2 class="lawyer-name">Tunde Babs</h2>
+            <p class="lawyer-case">Corporate Law</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">GM</h2>
+            <h2 class="lawyer-name">Goodness Mike</h2>
+            <p class="lawyer-case">Criminal Law</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">CD</h2>
+            <h2 class="lawyer-name">Cadmus Daniel</h2>
+            <p class="lawyer-case">Property Law</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+
+          <div class="lawyer-container">
+            <h2 class="lawyer-initials">CO</h2>
+            <h2 class="lawyer-name">Chidi Okonkwo</h2>
+            <p class="lawyer-case">Civil Litigation</p>
+            <p class="active-number">Active Case: 10</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-container direct">
+
+        <div class="info-container">
+          <div class="info-display">
+            <h1 class="info user-number">5</h1>
+            <p class="info-label">Total Users</p>
+          </div>
+
+          <div class="info-display">
+            <h1 class="info active-cases">4</h1>
+            <p class="info-label">Active</p>
+          </div>
+
+          <div class="info-display">
+            <h1 class="info inactive-cases">1</h1>
+            <p class="info-label">Inactive</p>
+          </div>
+        </div>
+
+        <div class="members">
+          <div class="members-title">
+            <h3>Team members</h3>
+            <p>Users registered</p>
+          </div>
+
+          <table class="info-table">
+            <thead>
+              <tr>
+                <th>USER</th>
+                <th>ROLE</th>
+                <th>EMAIL</th>
+                <th>STATUS</th>
+                <th>ACTIVE</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <div class="user-flex">
+                    <p class="user-initials">CO</p>
+                    <div class="user-text">
+                      <h3>Chidi Okonkwo</h3>
+                      <p>Mex-Trial & Associates</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <p class="senior-partner">Senior Partner</p>
+                </td>
+
+                <td>
+                  <p class="user-email">chidi@mex-trail.ng</p>
+                </td>
+                <td>
+                  <p class="admin-active">Active</p>
+                </td>
+                <td>
+                  <div class="toggle-state on"><span class="toggle-shift"></span></div>
+                </td>
+                <td><button class="edit-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.7812 1.71797L14.1594 2.09609C14.4531 2.38984 14.4531 2.86484 14.1594 3.15547L13.25 4.06797L11.8094 2.62734L12.7188 1.71797C13.0125 1.42422 13.4875 1.42422 13.7781 1.71797H13.7812ZM6.55625 7.88359L10.75 3.68672L12.1906 5.12734L7.99375 9.32109C7.90312 9.41172 7.79062 9.47734 7.66875 9.51172L5.84062 10.0336L6.3625 8.20547C6.39688 8.08359 6.4625 7.97109 6.55313 7.88047L6.55625 7.88359ZM11.6594 0.658594L5.49375 6.82109C5.22188 7.09297 5.025 7.42734 4.92188 7.79297L4.02812 10.918C3.95312 11.1805 4.025 11.4617 4.21875 11.6555C4.4125 11.8492 4.69375 11.9211 4.95625 11.8461L8.08125 10.9523C8.45 10.8461 8.78438 10.6492 9.05313 10.3805L15.2188 4.21797C16.0969 3.33984 16.0969 1.91484 15.2188 1.03672L14.8406 0.658594C13.9625 -0.219531 12.5375 -0.219531 11.6594 0.658594ZM2.75 1.87734C1.23125 1.87734 0 3.10859 0 4.62734V13.1273C0 14.6461 1.23125 15.8773 2.75 15.8773H11.25C12.7688 15.8773 14 14.6461 14 13.1273V9.62734C14 9.21172 13.6656 8.87734 13.25 8.87734C12.8344 8.87734 12.5 9.21172 12.5 9.62734V13.1273C12.5 13.818 11.9406 14.3773 11.25 14.3773H2.75C2.05938 14.3773 1.5 13.818 1.5 13.1273V4.62734C1.5 3.93672 2.05938 3.37734 2.75 3.37734H6.25C6.66563 3.37734 7 3.04297 7 2.62734C7 2.21172 6.66563 1.87734 6.25 1.87734H2.75Z"
+                        fill="#C9A84C" />
+                    </svg>
+                    <span>Edit Permissions</span></button></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="user-flex">
+                    <p class="user-initials">AE</p>
+                    <div class="user-text">
+                      <h3>Amaka Eze</h3>
+                      <p>Mex-Trial & Associates</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <p class="associate">Associate</p>
+                </td>
+
+                <td>
+                  <p class="user-email">amaka@mex-trail.ng</p>
+                </td>
+                <td>
+                  <p class="admin-active">Active</p>
+                </td>
+                <td>
+                  <div class="toggle-state on"><span class="toggle-shift"></span></div>
+                </td>
+                <td><button class="edit-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.7812 1.71797L14.1594 2.09609C14.4531 2.38984 14.4531 2.86484 14.1594 3.15547L13.25 4.06797L11.8094 2.62734L12.7188 1.71797C13.0125 1.42422 13.4875 1.42422 13.7781 1.71797H13.7812ZM6.55625 7.88359L10.75 3.68672L12.1906 5.12734L7.99375 9.32109C7.90312 9.41172 7.79062 9.47734 7.66875 9.51172L5.84062 10.0336L6.3625 8.20547C6.39688 8.08359 6.4625 7.97109 6.55313 7.88047L6.55625 7.88359ZM11.6594 0.658594L5.49375 6.82109C5.22188 7.09297 5.025 7.42734 4.92188 7.79297L4.02812 10.918C3.95312 11.1805 4.025 11.4617 4.21875 11.6555C4.4125 11.8492 4.69375 11.9211 4.95625 11.8461L8.08125 10.9523C8.45 10.8461 8.78438 10.6492 9.05313 10.3805L15.2188 4.21797C16.0969 3.33984 16.0969 1.91484 15.2188 1.03672L14.8406 0.658594C13.9625 -0.219531 12.5375 -0.219531 11.6594 0.658594ZM2.75 1.87734C1.23125 1.87734 0 3.10859 0 4.62734V13.1273C0 14.6461 1.23125 15.8773 2.75 15.8773H11.25C12.7688 15.8773 14 14.6461 14 13.1273V9.62734C14 9.21172 13.6656 8.87734 13.25 8.87734C12.8344 8.87734 12.5 9.21172 12.5 9.62734V13.1273C12.5 13.818 11.9406 14.3773 11.25 14.3773H2.75C2.05938 14.3773 1.5 13.818 1.5 13.1273V4.62734C1.5 3.93672 2.05938 3.37734 2.75 3.37734H6.25C6.66563 3.37734 7 3.04297 7 2.62734C7 2.21172 6.66563 1.87734 6.25 1.87734H2.75Z"
+                        fill="#C9A84C" />
+                    </svg>
+                    <span>Edit Permissions</span></button></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="user-flex">
+                    <p class="user-initials red">TB</p>
+                    <div class="user-text">
+                      <h3>Tunde Bakare</h3>
+                      <p>Mex-Trial & Associates</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <p class="associate">Associate</p>
+                </td>
+
+                <td>
+                  <p class="user-email">tunde@mex-trail.ng</p>
+                </td>
+                <td>
+                  <p class="admin-active">Active</p>
+                </td>
+                <td>
+                  <div class="toggle-state on"><span class="toggle-shift"></span></div>
+                </td>
+                <td><button class="edit-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.7812 1.71797L14.1594 2.09609C14.4531 2.38984 14.4531 2.86484 14.1594 3.15547L13.25 4.06797L11.8094 2.62734L12.7188 1.71797C13.0125 1.42422 13.4875 1.42422 13.7781 1.71797H13.7812ZM6.55625 7.88359L10.75 3.68672L12.1906 5.12734L7.99375 9.32109C7.90312 9.41172 7.79062 9.47734 7.66875 9.51172L5.84062 10.0336L6.3625 8.20547C6.39688 8.08359 6.4625 7.97109 6.55313 7.88047L6.55625 7.88359ZM11.6594 0.658594L5.49375 6.82109C5.22188 7.09297 5.025 7.42734 4.92188 7.79297L4.02812 10.918C3.95312 11.1805 4.025 11.4617 4.21875 11.6555C4.4125 11.8492 4.69375 11.9211 4.95625 11.8461L8.08125 10.9523C8.45 10.8461 8.78438 10.6492 9.05313 10.3805L15.2188 4.21797C16.0969 3.33984 16.0969 1.91484 15.2188 1.03672L14.8406 0.658594C13.9625 -0.219531 12.5375 -0.219531 11.6594 0.658594ZM2.75 1.87734C1.23125 1.87734 0 3.10859 0 4.62734V13.1273C0 14.6461 1.23125 15.8773 2.75 15.8773H11.25C12.7688 15.8773 14 14.6461 14 13.1273V9.62734C14 9.21172 13.6656 8.87734 13.25 8.87734C12.8344 8.87734 12.5 9.21172 12.5 9.62734V13.1273C12.5 13.818 11.9406 14.3773 11.25 14.3773H2.75C2.05938 14.3773 1.5 13.818 1.5 13.1273V4.62734C1.5 3.93672 2.05938 3.37734 2.75 3.37734H6.25C6.66563 3.37734 7 3.04297 7 2.62734C7 2.21172 6.66563 1.87734 6.25 1.87734H2.75Z"
+                        fill="#C9A84C" />
+                    </svg>
+                    <span>Edit Permissions</span></button></td>
+              </tr>
+
+              <tr class="state">
+                <td>
+                  <div class="user-flex">
+                    <p class="user-initials green">NA</p>
+                    <div class="user-text">
+                      <h3>Ngozi Adaobi</h3>
+                      <p>Mex-Trial & Associates</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <p class="legal-secretary">Legal Secretary</p>
+                </td>
+
+                <td>
+                  <p class="user-email">ngozi@mex-trail.ng</p>
+                </td>
+                <td>
+                  <p class="admin-active">Active</p>
+                </td>
+                <td>
+                  <div class="toggle-state on"><span class="toggle-shift"></span></div>
+                </td>
+                <td><button class="edit-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.7812 1.71797L14.1594 2.09609C14.4531 2.38984 14.4531 2.86484 14.1594 3.15547L13.25 4.06797L11.8094 2.62734L12.7188 1.71797C13.0125 1.42422 13.4875 1.42422 13.7781 1.71797H13.7812ZM6.55625 7.88359L10.75 3.68672L12.1906 5.12734L7.99375 9.32109C7.90312 9.41172 7.79062 9.47734 7.66875 9.51172L5.84062 10.0336L6.3625 8.20547C6.39688 8.08359 6.4625 7.97109 6.55313 7.88047L6.55625 7.88359ZM11.6594 0.658594L5.49375 6.82109C5.22188 7.09297 5.025 7.42734 4.92188 7.79297L4.02812 10.918C3.95312 11.1805 4.025 11.4617 4.21875 11.6555C4.4125 11.8492 4.69375 11.9211 4.95625 11.8461L8.08125 10.9523C8.45 10.8461 8.78438 10.6492 9.05313 10.3805L15.2188 4.21797C16.0969 3.33984 16.0969 1.91484 15.2188 1.03672L14.8406 0.658594C13.9625 -0.219531 12.5375 -0.219531 11.6594 0.658594ZM2.75 1.87734C1.23125 1.87734 0 3.10859 0 4.62734V13.1273C0 14.6461 1.23125 15.8773 2.75 15.8773H11.25C12.7688 15.8773 14 14.6461 14 13.1273V9.62734C14 9.21172 13.6656 8.87734 13.25 8.87734C12.8344 8.87734 12.5 9.21172 12.5 9.62734V13.1273C12.5 13.818 11.9406 14.3773 11.25 14.3773H2.75C2.05938 14.3773 1.5 13.818 1.5 13.1273V4.62734C1.5 3.93672 2.05938 3.37734 2.75 3.37734H6.25C6.66563 3.37734 7 3.04297 7 2.62734C7 2.21172 6.66563 1.87734 6.25 1.87734H2.75Z"
+                        fill="#C9A84C" />
+                    </svg>
+                    <span>Edit Permissions</span></button></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="user-flex opacity">
+                    <p class="user-initials red">KA</p>
+                    <div class="user-text">
+                      <h3>Kemi Adeyemi</h3>
+                      <p>Mex-Trial & Associates</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <p class="associate">Associate</p>
+                </td>
+
+                <td>
+                  <p class="user-email">kemi@mex-trail.ng</p>
+                </td>
+                <td>
+                  <p class="admin-inactive">Inactive</p>
+                </td>
+                <td>
+                  <div class="toggle-state"><span class="toggle-shift"></span></div>
+                </td>
+                <td><button class="edit-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.7812 1.71797L14.1594 2.09609C14.4531 2.38984 14.4531 2.86484 14.1594 3.15547L13.25 4.06797L11.8094 2.62734L12.7188 1.71797C13.0125 1.42422 13.4875 1.42422 13.7781 1.71797H13.7812ZM6.55625 7.88359L10.75 3.68672L12.1906 5.12734L7.99375 9.32109C7.90312 9.41172 7.79062 9.47734 7.66875 9.51172L5.84062 10.0336L6.3625 8.20547C6.39688 8.08359 6.4625 7.97109 6.55313 7.88047L6.55625 7.88359ZM11.6594 0.658594L5.49375 6.82109C5.22188 7.09297 5.025 7.42734 4.92188 7.79297L4.02812 10.918C3.95312 11.1805 4.025 11.4617 4.21875 11.6555C4.4125 11.8492 4.69375 11.9211 4.95625 11.8461L8.08125 10.9523C8.45 10.8461 8.78438 10.6492 9.05313 10.3805L15.2188 4.21797C16.0969 3.33984 16.0969 1.91484 15.2188 1.03672L14.8406 0.658594C13.9625 -0.219531 12.5375 -0.219531 11.6594 0.658594ZM2.75 1.87734C1.23125 1.87734 0 3.10859 0 4.62734V13.1273C0 14.6461 1.23125 15.8773 2.75 15.8773H11.25C12.7688 15.8773 14 14.6461 14 13.1273V9.62734C14 9.21172 13.6656 8.87734 13.25 8.87734C12.8344 8.87734 12.5 9.21172 12.5 9.62734V13.1273C12.5 13.818 11.9406 14.3773 11.25 14.3773H2.75C2.05938 14.3773 1.5 13.818 1.5 13.1273V4.62734C1.5 3.93672 2.05938 3.37734 2.75 3.37734H6.25C6.66563 3.37734 7 3.04297 7 2.62734C7 2.21172 6.66563 1.87734 6.25 1.87734H2.75Z"
+                        fill="#C9A84C" />
+                    </svg>
+                    <span>Edit Permissions</span></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-2 indirect">
+        <div class="container">
+          <button class="back-btn"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.00001 0V4H13.92L13.95 6.01H5.00001V10L1.14441e-05 5L5.00001 0Z" fill="#C9A84C" />
+            </svg>&nbsp;Back to main Admin Portal
+          </button>
+
+          <div class="admin-grid">
+            <div class="admin-roles">
+              <p class="title">Role</p>
+              <div class="admin-role-flex">
+                <div class="admin-role selected">Senior Partner</div>
+                <div class="admin-role">Associate</div>
+                <div class="admin-role">Legal Secretary</div>
+              </div>
+            </div>
+
+            <div class="admin-details">
+              <div class="admin-flex">
+                <p class="admin-initials">CO</p>
+
+                <div class="admin-text">
+                  <h2 class="admin-name">Chidi Okonkwo</h2>
+                  <p class="admin-email">chidi@mex-trial.ng</p>
+                  <p class="admin-details-role">Senior Partner</p>
+                </div>
+              </div>
+
+              <p class="warning"><svg width="20" height="18" viewBox="0 0 20 18" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12.8 1.61286L19.501 12.7739C20.464 14.3769 19.991 16.4859 18.444 17.4839C17.9251 17.8207 17.3197 18 16.701 17.9999H3.298C1.477 17.9999 0 16.4699 0 14.5809C0 13.9419 0.173 13.3169 0.498 12.7739L7.2 1.61286C8.162 0.00985837 10.196 -0.481142 11.743 0.516858C12.171 0.792858 12.533 1.16786 12.8 1.61286ZM10.58 2.45186C10.4576 2.37311 10.3205 2.32 10.1769 2.29574C10.0334 2.27147 9.88647 2.27654 9.74496 2.31066C9.60346 2.34477 9.47033 2.40722 9.35364 2.49422C9.23694 2.58122 9.13909 2.69098 9.066 2.81686L2.365 13.9799C2.25615 14.1618 2.19877 14.3699 2.199 14.5819C2.199 15.2119 2.691 15.7219 3.299 15.7219H16.7C16.906 15.7219 17.107 15.6619 17.281 15.5499C17.5307 15.384 17.7067 15.1281 17.7725 14.8357C17.8383 14.5432 17.7886 14.2367 17.634 13.9799L10.933 2.81686C10.8457 2.66944 10.7252 2.54445 10.581 2.45186H10.58ZM10 13.9999C9.73478 13.9999 9.48043 13.8945 9.29289 13.707C9.10536 13.5194 9 13.2651 9 12.9999C9 12.7346 9.10536 12.4803 9.29289 12.2928C9.48043 12.1052 9.73478 11.9999 10 11.9999C10.2652 11.9999 10.5196 12.1052 10.7071 12.2928C10.8946 12.4803 11 12.7346 11 12.9999C11 13.2651 10.8946 13.5194 10.7071 13.707C10.5196 13.8945 10.2652 13.9999 10 13.9999ZM10 4.99986C10.2652 4.99986 10.5196 5.10522 10.7071 5.29275C10.8946 5.48029 11 5.73464 11 5.99986V9.99986C11 10.2651 10.8946 10.5194 10.7071 10.707C10.5196 10.8945 10.2652 10.9999 10 10.9999C9.73478 10.9999 9.48043 10.8945 9.29289 10.707C9.10536 10.5194 9 10.2651 9 9.99986V5.99986C9 5.73464 9.10536 5.48029 9.29289 5.29275C9.48043 5.10522 9.73478 4.99986 10 4.99986Z"
+                    fill="#E05252" />
+                </svg>&nbsp;Changes take effect immediately
+              </p>
+            </div>
+
+            <div class="admin-options">
+              <button class="admin-cancel-btn">Cancel</button>
+              <button class="admin-save-btn">Save Changes</button>
+            </div>
+
+            <div class="admin-permissions">
+              <p class="title">Permissions</p>
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>View All Cases</h3>
+                  <p>See cases across all lawyers</p>
+                </div>
+
+                <div class="permission-control granted"><span class="permission-toggle"></span></div>
+              </div>
+
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>Edit Any Case</h3>
+                  <p>Modify cases not assigned to them</p>
+                </div>
+
+                <div class="permission-control granted"><span class="permission-toggle"></span></div>
+              </div>
+
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>Create Cases</h3>
+                  <p>Open new case files</p>
+                </div>
+
+                <div class="permission-control"><span class="permission-toggle"></span></div>
+              </div>
+
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>Delete Cases</h3>
+                  <p>Permanently remove a case</p>
+                </div>
+
+                <div class="permission-control granted"><span class="permission-toggle"></span></div>
+              </div>
+
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>Manage Users</h3>
+                  <p>Admin portal access</p>
+                </div>
+
+                <div class="permission-control granted"><span class="permission-toggle"></span></div>
+              </div>
+
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>View Reports</h3>
+                  <p>Analytics & export data</p>
+                </div>
+
+                <div class="permission-control granted"><span class="permission-toggle"></span></div>
+              </div>
+
+              <div class="admin-permission-change">
+                <div class="admin-permission-label">
+                  <h3>Manage Clients</h3>
+                  <p>Create and edit clients profile</p>
+                </div>
+
+                <div class="permission-control granted"><span class="permission-toggle"></span></div>
+              </div>
+            </div>
+
+            <div class="admin-permissions-preview">
+              <p class="title">Permission Preview</p>
+
+              <div class="admin-permissions-preview-flex">
+                <div class="admin-permission">View All Cases</div>
+                <div class="admin-permission">Edit Any Case</div>
+                <div class="admin-permission">Create cases</div>
+                <div class="admin-permission">Delete cases</div>
+                <div class="admin-permission">Manage Users</div>
+                <div class="admin-permission">View Reports</div>
+                <div class="admin-permission">Manage Clients</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-container direct">
+        <div class="profile-container">
+          <h3 class="profile-title">Profile</h3>
+          <div class="profile-flex">
+            <p class="profile-initials">CO</p>
+
+            <div class="profile-info">
+              <h2 class="profile-name">Chidi Okonkwo</h2>
+              <p class="profile-role">Senior Partner</p>
+              <p class="profile-firm">Mex-Trial & Associates</p>
+            </div>
+          </div>
+
+          <div class="profile-info-item">
+            <p class="profile-label">EMAIL</p>
+            <p class="profile-sub-email">chidi@mex-trial.ng</p>
+          </div>
+
+          <div class="profile-info-item">
+            <p class="profile-label">ROLE</p>
+            <p class="profile-sub-role">Senior Partner</p>
+          </div>
+
+          <div class="profile-info-item">
+            <p class="profile-label">FIRM</p>
+            <p class="profile-sub-firm">Mex-Trial & Associates</p>
+          </div>
+
+          <div class="action-btns">
+            <button class="action-btn">Edit Profile</button>
+            <button class="action-btn">Change Password</button>
+          </div>
+        </div>
+
+        <div class="permissions-container">
+          <p class="title">Your permissions</p>
+          <div class="permissions">
+            <p class="permission">View All Cases</p>
+            <p class="permission">Edit Any Case</p>
+            <p class="permission">Create Cases</p>
+            <p class="permission">Delete Cases</p>
+            <p class="permission">Manage Users</p>
+            <p class="permission">View Reports</p>
+            <p class="permission">Manage Clients</p>
+          </div>
+        </div>
+
+        <div class="admin-sect">
+          <div class="admin-icon">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_3_1361)">
+                <path
+                  d="M29 27.0514C29 28.1389 28.0031 28.9998 26.7797 28.9998H2.22031C0.996875 28.9998 0 28.1389 0 27.0514V4.12324C0 3.03574 0.996875 2.1748 2.22031 2.1748H26.7797C28.0031 2.1748 29 3.03574 29 4.12324V27.0514Z"
+                  fill="#99C6FF" />
+                <path d="M22.1579 4.30469H6.84229L8.3376 0H20.6626L22.1579 4.30469Z" fill="#99C6FF" />
+                <path
+                  d="M8.3376 1.31396L6.84229 4.30459L12.2798 12.3249V6.84209L8.3376 1.31396ZM20.6626 1.31396L22.1579 4.30459L16.7204 12.3249V6.84209L20.6626 1.31396Z"
+                  fill="#99C6FF" />
+                <path
+                  d="M8.3376 0L6.84229 4.30469L12.2798 11.0562V5.52812L8.3376 0ZM20.6626 0L22.1579 4.30469L16.7204 11.0562V5.52812L20.6626 0Z"
+                  fill="#99C6FF" />
+                <path d="M17.0828 11.0562H11.9172L10.4219 25.7374L14.5453 28.9999L18.5781 25.7374L17.0828 11.0562Z"
+                  fill="#42ADE2" />
+                <path
+                  d="M17.2641 12.5061L17.1281 11.0107H11.9172L11.7812 12.5061C12.8688 13.3217 16.0859 13.2764 17.2641 12.5061Z"
+                  fill="#428BC1" />
+                <path
+                  d="M17.4906 11.0564C16.4937 12.0533 12.4156 12.1439 11.5546 11.0564C10.6484 9.92363 12.2796 5.52832 12.2796 5.52832C12.2796 5.52832 13.9562 6.1627 14.4999 6.1627C15.0437 6.1627 16.7202 5.52832 16.7202 5.52832C16.7202 5.52832 18.5327 10.0143 17.4906 11.0564Z"
+                  fill="#42ADE2" />
+              </g>
+              <defs>
+                <clipPath id="clip0_3_1361">
+                  <rect width="29" height="29" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="admin-text">
+            <h3 class="admin-title">Admin Portal</h3>
+            <p>Manage users, roles & permissions</p>
+          </div>
+        </div>
+
+        <div class="about-container">
+          <p class="title">About Docket</p>
+
+          <div class="about-info">
+            <p class="info-title">VERSION</p>
+            <p class="info">1.0.0</p>
+          </div>
+
+          <div class="about-info">
+            <p class="info-title">BUILD</p>
+            <p class="info">2026.03</p>
+          </div>
+
+          <div class="about-info">
+            <p class="info-title">FIRM</p>
+            <p class="info">Mex-Trial & Associates</p>
+          </div>
+
+          <div class="about-info">
+            <p class="info-title">PLATFORM</p>
+            <p class="info">Web Desktop</p>
+          </div>
+        </div>
+
+        <div class="notification-container">
+          <div class="notification-access">
+            <div class="notification">
+              <h3 class="notification-name">Hearing Alerts</h3>
+              <p class="notification-about">3-days and 7-days reminders</p>
+            </div>
+
+            <div class="notification-activate activate"><span class="notification-toggle"></span></div>
+          </div>
+
+          <div class="notification-access">
+            <div class="notification">
+              <h3 class="notification-name">Daily Digest</h3>
+              <p class="notification-about">Morning case summary</p>
+            </div>
+
+            <div class="notification-activate activate"><span class="notification-toggle"></span></div>
+          </div>
+
+          <div class="notification-access">
+            <div class="notification">
+              <h3 class="notification-name">Assignments Alerts</h3>
+              <p class="notification-about">When cases are assigned</p>
+            </div>
+
+            <div class="notification-activate"><span class="notification-toggle"></span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+
+        <div class="overlay hidden"></div>
+        
+              <form class="new-cases-form hidden" novalidate>
+                <div class="new-case-flex">
+                  <h2>New Cases</h2>
+                  <svg class="cancel-case-btn" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 12.486L7.243 7.243L12.486 12.486M12.486 2L7.242 7.243L2 2" stroke="#428BC1"
+                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg> 
+                </div>
+          
+                <div class="form-group">
+                  <label for="case">Case Title</label>
+                  <input type="text" id="case" placeholder="e.g. Isaac V. Shemiah" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="client">CLIENT NAME</label>
+                  <input type="text" id="client" placeholder="e.g. Isaac John" required/>
+                </div>
+          
+                <div class="form-group">
+                  <label for="date">COURT</label>
+                  <input type="date" id="date" required/>
+                </div>
+          
+                <div class="select-group">
+                  <div class="form-group">
+                    <label for="case-type">Case Type</label>
+                    <select id="case-type" required>
+                      <option value="">Select case type <svg class="cancel-case-btn" width="16" height="10" viewBox="0 0 16 10" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2L8 8L2 2" stroke="white"
+                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg> </option>
+                      <option value="Criminal Law">Criminal Law</option>
+                      <option value="Corporate Law">Corporate Law</option>
+                      <option value="Property Law">Property Law</option>
+                      <option value="Civil Litigation">Civil Litigation</option>
+                      <option value="Divorce">Divorce</option>
+                    </select>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="assign-lawyer">Assign Lawyer</label>
+                    <select id="assign-lawyer" required>
+                      <option value="">Select a lawyer</option>
+                      <option value="Tunde">Tunde</option>
+                      <option value="Goodness">Goodness</option>
+                      <option value="Cadmus">Cadmus</option>
+                      <option value="Chidi Okonkwo">Chidi Okonkwo</option>
+                      <option value="Jahswill">Jahswill</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="filed">Filed</label>
+                  <input type="date" id="filed" required/>
+                </div>
+          
+                <div class="add-case-flex">
+                  <button class="cancel-case" type="reset">Cancel</button>
+                  <button class="add-case" type="submit">Create Case</button>
+                </div>
+               </form>
+      </div>
+
+      <script src="dashboard.js"></script>
 </body>
+
 </html>

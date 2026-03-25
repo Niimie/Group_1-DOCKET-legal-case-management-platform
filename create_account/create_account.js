@@ -171,14 +171,43 @@ form.addEventListener("submit", function (e) {
         return false;
     }
 
+    btnSubmit.disabled = false;
+
     const collectedData = {
-        username: fullName.value,
+        full_name: fullName.value,
         email: workEmail.value,
-        firm: lawFirm.value,
         role: selectedRole.value,
         password: password.value,
-    }
+        phone: "",
+        specialty: "",
+    };
 
-    alert(`collected data: ${JSON.stringify(collectedData)}`);
-    form.submit();
+    createUser(collectedData);
 });
+
+async function createUser(userData) {
+  const url = "https://docket-backend-tcg1cp-production.up.railway.app/api/auth/register";
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData)
+    });
+
+    const result = await response.json();
+
+    if(response.ok) {
+        alert("Account created successfully!");
+        window.location.href = "../login/index.html";    
+    } else {
+        console.error("Validation Errors:", result.errors);
+        alert(`Error: ${result.message}`);
+    }
+} catch (error) {
+    console.error("Error:", error);
+            alert("Server is unreachable. Are you online?");
+  }
+}
