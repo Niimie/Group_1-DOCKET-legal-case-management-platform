@@ -1,330 +1,388 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .container {
-    min-width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
-    min-height: 100vh;
-    height: fit-content;
-    /* padding: 3rem 10rem; */
-    padding-right: 10rem;
-    gap: 20px;
-    color: white;
-    background-color: RGBa(13, 27, 42, 1);
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  min-height: 100vh;
+  height: fit-content;
+  /* padding: 3rem 10rem; */
+  padding-right: 10rem;
+  gap: 20px;
+  color: white;
+  background-color: RGBa(13, 27, 42, 1);
 }
 
 .aside-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    background-color: RGBa(255, 255, 255, 0.01);
-    border-radius: 5px;
-    height: 100%;
-    padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background-color: RGBa(255, 255, 255, 0.01);
+  border-radius: 5px;
+  height: 100%;
+  padding: 1rem 2rem;
 }
 
 .docket-header {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 .aside-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .sub-title {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
 }
 
 .aside-items {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .aside-icon {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 }
 
 .aside-item {
-    background-color: RGBa(255, 255, 255, 0.56);
-    display: flex;
-    font-weight: 700;
-    align-items: center;
-    border-radius: 5px;
-    gap: 20px;
-    width: 100%;
-    padding: 1rem;
-    color: rgb(2, 2, 60);
+  background-color: RGBa(255, 255, 255, 0.56);
+  display: flex;
+  font-weight: 700;
+  align-items: center;
+  border-radius: 5px;
+  gap: 20px;
+  width: 100%;
+  padding: 1rem;
+  color: rgb(2, 2, 60);
 }
 
 .copyright-access {
-    color: rgba(255, 255, 255, 1);
-    font-size: 1.4rem;
-    font-weight: 200;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.4rem;
+  font-weight: 200;
 }
 
 .form-header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .docket-logo {
-    display: none;
+  display: none;
 }
 
 .form-title {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .current-title {
-    gap: 20px;
-    display: flex;
+  gap: 20px;
+  display: flex;
 }
 
 .current-title li {
-    display: none;
+  display: none;
 }
 
 .current-title li.active {
-    display: list-item;
+  display: list-item;
 }
 
 .progress-bars {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .progress-bar {
-    background-color: white;
-    width: 100%;
-    height: 0.3rem;
-    border-radius: 20px;
-    margin: 3rem 0;
-    position: relative;
+  background-color: white;
+  width: 100%;
+  height: 0.3rem;
+  border-radius: 20px;
+  margin: 3rem 0;
+  position: relative;
 }
 
 .inner-bar {
-    width: 0;
-    display: inline-block;
-    position: absolute;
-    height: 100%;
-    transition: all 1s;
+  width: 0;
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  transition: all 1s;
 }
 
 .progress-bar.current .inner-bar {
-    width: 100%;
-    background-color: RGBa(201, 168, 76, 1);
-    position: absolute;
+  width: 100%;
+  background-color: RGBa(201, 168, 76, 1);
+  position: absolute;
 }
 
 .form-section {
-    display: none;
-    transition: all 1s;
+  display: none;
+  transition: all 1s;
 }
 
 .form-section.active {
-    display: block;
-    animation: slideIn 1s;
+  display: block;
+  animation: slideIn 1s;
 }
 
 @keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateX(0)
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .input-group input {
-    background-color: rgba(255, 255, 255, 0.28);
-    width: 100%;
-    padding: 2rem 3rem;
-    outline: none;
-    border-radius: 10px;
-    border: 0.1px solid white;
-    color: white;
+  background-color: rgba(255, 255, 255, 0.28);
+  width: 100%;
+  padding: 2rem 3rem;
+  outline: none;
+  border-radius: 10px;
+  border: 0.1px solid white;
+  color: white;
 }
 
 .input-group input::placeholder {
-    color: white;
+  color: white;
 }
 
 .inline-error {
-    color: red;
+  color: red;
 }
 
 .primary-btn {
-    width: 100%;
-    padding: 2rem;
-    background-color: RGBa(201, 168, 76, 1);
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    color: white;
+  width: 100%;
+  padding: 2rem;
+  background-color: RGBa(201, 168, 76, 1);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: white;
 }
 
 .primary-arrow {
-    color: black;
+  color: black;
 }
 
 .role-title {
-    color: RGBa(255, 255, 255, 0.7);
+  color: RGBa(255, 255, 255, 0.7);
 }
 
 .role-title span {
-    color: RGBa(201, 168, 76, 1);
+  color: RGBa(201, 168, 76, 1);
 }
 
 .radio-group {
-    border-radius: 12px;
-    border: 0.5px solid RGBa(0, 167, 228, 1);
-    padding: 1.5rem 3rem 1.5rem 0.7rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px 0;
+  border-radius: 12px;
+  border: 0.5px solid RGBa(0, 167, 228, 1);
+  padding: 1.5rem 3rem 1.5rem 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
 }
 
 .radio-group input {
-    transform: scale(2);
-    /* background-color: RGBa(153, 198, 255, 1); */
-    appearance: none;
-    --webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 1px solid RGBa(153, 198, 255, 1);
-    border-radius: 50%;
+  transform: scale(2);
+  /* background-color: RGBa(153, 198, 255, 1); */
+  appearance: none;
+  --webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid RGBa(153, 198, 255, 1);
+  border-radius: 50%;
 }
 
 .radio-group input:checked {
-    background-color: RGBa(201, 168, 76, 1) !important;
-    border: 1px solid RGBa(153, 198, 255, 1) !important;
-    box-shadow: inset 0 0 0 4px RGBa(13, 27, 42, 1) !important;
+  background-color: RGBa(201, 168, 76, 1) !important;
+  border: 1px solid RGBa(153, 198, 255, 1) !important;
+  box-shadow: inset 0 0 0 4px RGBa(13, 27, 42, 1) !important;
 }
 
 .radio-group:hover input {
-    background-color: RGBa(13, 27, 42, 1);
-    /* box-shadow: 5px 5px 5px 5px 0 RGBa(201, 168, 76, 1); */
-    border: 4px solid RGBa(201, 168, 76, 1);
+  background-color: RGBa(13, 27, 42, 1);
+  /* box-shadow: 5px 5px 5px 5px 0 RGBa(201, 168, 76, 1); */
+  border: 4px solid RGBa(201, 168, 76, 1);
 }
 
 .radio-title {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .radio-title label {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .radio-title p {
-    color: RGBa(153, 198, 255, 1);
+  color: RGBa(153, 198, 255, 1);
 }
 
 .button-flex {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .secondary-btn {
-    background-color: RGBa(13, 27, 42, 1);
-    border: 2px solid RGBa(201, 168, 76, 1);
-    color: RGBa(201, 168, 76, 1);
-    width: 100%;
-    padding: 2rem;
-    border-radius: 10px;
+  background-color: RGBa(13, 27, 42, 1);
+  border: 2px solid RGBa(201, 168, 76, 1);
+  color: RGBa(201, 168, 76, 1);
+  width: 100%;
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .btn-submit {
-    width: 100%;
-    outline: none;
-    border: none;
-    background-color: RGBa(201, 168, 76, 1);
-    padding: 2rem;
-    border-radius: 10px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: RGBa(201, 168, 76, 1);
+  padding: 2rem;
+  border-radius: 10px;
 }
 
-@media(max-width: 1330px) {
-    .container {
-        padding: 3rem 5rem;
-    }
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-@media(max-width: 1230px) {
-    html {
-        font-size: 50%;
-    }
-
-    .container {
-        padding: 3rem;
-    }
+.form-status {
+  margin-top: 1.6rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 1rem;
+  display: none;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
 }
 
-@media(max-width: 750px) {
-    .container {
-        grid-template-columns: auto;
-        margin: auto 0;
-    }
-
-    .aside-nav {
-        display: none;
-    }
-
-    .docket-logo {
-        display: block;
-    }
+.form-status.visible {
+  display: flex;
 }
 
-@media(max-width: 440px) {
-    .radio-title p {
-        display: none;
-    }
+.form-status.loading {
+  background-color: rgba(0, 167, 228, 0.12);
+  border: 1px solid rgba(0, 167, 228, 0.45);
+  color: rgba(196, 232, 251, 1);
+}
 
-    .radio-title {
-        padding: 1rem 0;
-    }
+.form-status.success {
+  background-color: rgba(55, 182, 116, 0.14);
+  border: 1px solid rgba(55, 182, 116, 0.5);
+  color: rgba(186, 255, 220, 1);
+}
+
+.form-status.error {
+  background-color: rgba(242, 78, 78, 0.14);
+  border: 1px solid rgba(242, 78, 78, 0.5);
+  color: rgba(255, 200, 200, 1);
+}
+
+.status-spinner {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(201, 168, 76, 1);
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1330px) {
+  .container {
+    padding: 3rem 5rem;
+  }
+}
+
+@media (max-width: 1230px) {
+  html {
+    font-size: 50%;
+  }
+
+  .container {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    grid-template-columns: auto;
+    margin: auto 0;
+  }
+
+  .aside-nav {
+    display: none;
+  }
+
+  .docket-logo {
+    display: block;
+  }
+}
+
+@media (max-width: 440px) {
+  .radio-title p {
+    display: none;
+  }
+
+  .radio-title {
+    padding: 1rem 0;
+  }
 }

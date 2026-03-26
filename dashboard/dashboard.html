@@ -114,7 +114,12 @@
 
 
           <!------------------Case Cards----------------------->
-          <div class="case-cards">
+          <div id="stats-loading" class="stats-loading is-visible" role="status" aria-live="polite">
+            <span class="stats-spinner" aria-hidden="true"></span>
+            <p>Fetching dashboard stats...</p>
+          </div>
+
+          <div class="case-cards is-loading">
             <div class="cards">
               <div class="card-top">
                 <p class="case-stats">TOTAL CASES</p>
@@ -161,6 +166,11 @@
               </div>
 
 
+
+              <div id="recent-cases-loading" class="recent-cases-loading is-visible" role="status" aria-live="polite">
+                <span class="stats-spinner" aria-hidden="true"></span>
+                <p>Loading recent cases...</p>
+              </div>
 
               <div class="table-wrap">
                 <table class="recent-table">
@@ -265,6 +275,11 @@
               <div class="hearing-head">
                 <h3 class="hearing-title">Upcoming Hearings</h3>
                 <a href="#" class="hearing-link">Calendar <i class="ph ph-arrow-right"></i></a>
+              </div>
+
+              <div id="hearings-loading" class="recent-cases-loading is-visible" role="status" aria-live="polite">
+                <span class="stats-spinner" aria-hidden="true"></span>
+                <p>Loading hearings...</p>
               </div>
 
               <div class="hearing-list">
@@ -502,48 +517,52 @@
         <div class="table_container">
           <h4> 5 Clients</h4>
           <table class="client-table">
-            <tr>
-              <th>Client</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Cases</th>
-              <th>Joined</th>
-            </tr>
-            <tr>
-              <td><span class="avatar">JM</span>John Mercy</td>
-              <td>johnM@gmail.com</td>
-              <td>08082738591</td>
-              <td><span class="badge">1</span></td>
-              <td>13 Mar 2026</td>
-            </tr>
-            <tr>
-              <td><span class="avatar">CE</span>Collins Ettu</td>
-              <td>Ettu23@gmail.com</td>
-              <td>08123456789</td>
-              <td><span class="badge">3</span></td>
-              <td>20 Jan 2026</td>
-            </tr>
-            <tr>
-              <td><span class="avatar">ML</span>Mark Luke</td>
-              <td>lotu23@gmail.com</td>
-              <td>08123456789</td>
-              <td><span class="badge">2</span></td>
-              <td>10 Dec 2025</td>
-            </tr>
-            <tr>
-              <td><span class="avatar">NT</span>Nwoke Titus</td>
-              <td>Titu23@gmail.com</td>
-              <td>08120921789</td>
-              <td><span class="badge">5</span></td>
-              <td>20 Oct 2025</td>
-            </tr>
-            <tr>
-              <td><span class="avatar">MP</span>Mgbe Precious</td>
-              <td>Preshy23@gmail.com</td>
-              <td>09023456789</td>
-              <td><span class="badge">3</span></td>
-              <td>12 Aug 2025</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Cases</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="avatar">JM</span>John Mercy</td>
+                <td>johnM@gmail.com</td>
+                <td>08082738591</td>
+                <td><span class="badge">1</span></td>
+                <td>13 Mar 2026</td>
+              </tr>
+              <tr>
+                <td><span class="avatar">CE</span>Collins Ettu</td>
+                <td>Ettu23@gmail.com</td>
+                <td>08123456789</td>
+                <td><span class="badge">3</span></td>
+                <td>20 Jan 2026</td>
+              </tr>
+              <tr>
+                <td><span class="avatar">ML</span>Mark Luke</td>
+                <td>lotu23@gmail.com</td>
+                <td>08123456789</td>
+                <td><span class="badge">2</span></td>
+                <td>10 Dec 2025</td>
+              </tr>
+              <tr>
+                <td><span class="avatar">NT</span>Nwoke Titus</td>
+                <td>Titu23@gmail.com</td>
+                <td>08120921789</td>
+                <td><span class="badge">5</span></td>
+                <td>20 Oct 2025</td>
+              </tr>
+              <tr>
+                <td><span class="avatar">MP</span>Mgbe Precious</td>
+                <td>Preshy23@gmail.com</td>
+                <td>09023456789</td>
+                <td><span class="badge">3</span></td>
+                <td>12 Aug 2025</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </section>

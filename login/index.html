@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,7 +16,6 @@
       rel="stylesheet"
       href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
     />
-
   </head>
 
   <body>
@@ -55,7 +54,6 @@
             <span>Role-based access management</span>
           </div>
         </div>
-
       </section>
 
       <!-- RIGHT PAGE -->
@@ -68,13 +66,9 @@
         <p class="signin-text">Sign in to your Docket account</p>
 
         <div class="roles">
-          <button class="role active" data-role="secretary">
-            Secretary
-          </button>
+          <button class="role active" data-role="secretary">Secretary</button>
 
-          <button class="role" data-role="associate">
-            Associate
-          </button>
+          <button class="role" data-role="associate">Associate</button>
 
           <button class="role" data-role="senior_partner">
             Senior Partner
@@ -108,6 +102,13 @@
             Sign In
             <a href="../navigation/nav.html"></a>
           </button>
+
+          <div
+            id="login-status"
+            class="login-status"
+            role="status"
+            aria-live="polite"
+          ></div>
         </form>
 
         <div class="links">
@@ -115,7 +116,9 @@
 
           <p>
             New to Docket?
-            <a href="../create_account/create_account.html">Create an account →</a>
+            <a href="../create_account/create_account.html"
+              >Create an account →</a
+            >
           </p>
         </div>
       </section>
