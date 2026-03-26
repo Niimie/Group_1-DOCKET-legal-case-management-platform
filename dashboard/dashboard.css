@@ -1329,6 +1329,7 @@ select {
   padding: 0.6rem;
   border-radius: 5px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .form-group input::placeholder {
@@ -1359,4 +1360,23 @@ option {
 .add-case-flex {
   display: flex;
   gap: 2rem;
+}
+
+.case-form-msg {
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.case-form-error {
+  background: rgba(255, 56, 60, 0.12);
+  border: 1px solid #ff383c;
+  color: #ff383c;
+}
+
+.case-form-success {
+  background: rgba(52, 199, 89, 0.12);
+  border: 1px solid #34c759;
+  color: #34c759;
 }

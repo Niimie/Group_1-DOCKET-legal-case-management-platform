@@ -108,7 +108,6 @@
               <h1 class="dash-name">Dashboard</h1>
               <p class="welcome">Welcome back, John</p>
             </div>
-            <button class="dash-btn"><i class="ph ph-plus"></i> New Case</button>
 
           </header>
 
@@ -510,7 +509,7 @@
             <input type="text" placeholder="Search clients...">
           </div>
           <div>
-            <a href="New_client.html" class="btn_2">Add client</a>
+            <a href="../create_client/create_client.html" class="btn_2">Add client</a>
           </div>
         </div>
 
@@ -1212,59 +1211,64 @@
                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                   </svg> 
                 </div>
+
+                <div id="case-form-error" class="case-form-msg case-form-error hidden"></div>
+                <div id="case-form-success" class="case-form-msg case-form-success hidden"></div>
           
                 <div class="form-group">
-                  <label for="case">Case Title</label>
-                  <input type="text" id="case" placeholder="e.g. Isaac V. Shemiah" required>
+                  <label for="case-title">Case Title</label>
+                  <input type="text" id="case-title" placeholder="e.g. Johnson v. Federal Republic of Nigeria" required>
                 </div>
-          
+
                 <div class="form-group">
-                  <label for="client">CLIENT NAME</label>
-                  <input type="text" id="client" placeholder="e.g. Isaac John" required/>
+                  <label for="case-description">Description</label>
+                  <input type="text" id="case-description" placeholder="e.g. Criminal appeal against unlawful detention">
                 </div>
-          
+
                 <div class="form-group">
-                  <label for="date">DATE</label>
-                  <input type="date" id="date" required/>
+                  <label for="case-client-id">Client ID</label>
+                  <input type="text" id="case-client-id" placeholder="e.g. 660f9500-f39c-42e5-b827-557766550002" required>
                 </div>
           
                 <div class="select-group">
                   <div class="form-group">
                     <label for="case-type">Case Type</label>
                     <select id="case-type" required>
-                      <option value="">Select case type <svg class="cancel-case-btn" width="16" height="10" viewBox="0 0 16 10" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14 2L8 8L2 2" stroke="white"
-                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg> </option>
-                      <option value="Criminal Law">Criminal Law</option>
-                      <option value="Corporate Law">Corporate Law</option>
-                      <option value="Property Law">Property Law</option>
-                      <option value="Civil Litigation">Civil Litigation</option>
-                      <option value="Divorce">Divorce</option>
+                      <option value="" disabled selected>Select case type</option>
+                      <option value="Criminal">Criminal</option>
+                      <option value="Corporate">Corporate</option>
+                      <option value="Property">Property</option>
+                      <option value="Civil">Civil</option>
+                      <option value="Family">Family</option>
                     </select>
                   </div>
           
                   <div class="form-group">
-                    <label for="assign-lawyer">Assign Lawyer</label>
-                    <select id="assign-lawyer" required>
-                      <option value="">Select a lawyer</option>
-                      <option value="Tunde">Tunde</option>
-                      <option value="Goodness">Goodness</option>
-                      <option value="Cadmus">Cadmus</option>
-                      <option value="Chidi Okonkwo">Chidi Okonkwo</option>
-                      <option value="Jahswill">Jahswill</option>
+                    <label for="case-status">Status</label>
+                    <select id="case-status" required>
+                      <option value="" disabled selected>Select status</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Active">Active</option>
+                      <option value="Urgent">Urgent</option>
+                      <option value="In Review">In Review</option>
                     </select>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="filed">Filed</label>
-                  <input type="date" id="filed" required/>
+                <div class="select-group">
+                  <div class="form-group">
+                    <label for="case-lawyer-id">Lawyer ID</label>
+                    <input type="text" id="case-lawyer-id" placeholder="e.g. 550e8400-e29b-41d4-a716-446655440002">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="case-filed-date">Filed Date</label>
+                    <input type="date" id="case-filed-date" required>
+                  </div>
                 </div>
           
                 <div class="add-case-flex">
-                  <button class="cancel-case" type="reset">Cancel</button>
+                  <button class="cancel-case cancel-case-btn" type="reset">Cancel</button>
                   <button class="add-case" type="submit">Create Case</button>
                 </div>
                </form>

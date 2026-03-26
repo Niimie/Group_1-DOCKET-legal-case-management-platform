@@ -563,49 +563,108 @@ navItems.forEach((navItem, i) => {
 
 const navBtn = document.querySelector(".btn_1");
 const form = document.querySelector("form");
-const cancelForm = document.querySelector(".cancel-case-btn");
+const cancelBtns = document.querySelectorAll(".cancel-case-btn");
 const addBtn = document.querySelector(".add-case");
+const caseFormError = document.getElementById("case-form-error");
+const caseFormSuccess = document.getElementById("case-form-success");
 
 navBtn.addEventListener("click", function () {
   form.classList.remove("hidden");
   overlay.classList.remove("hidden");
 });
 
-cancelForm.addEventListener("click", function () {
-  form.classList.add("hidden");
-  overlay.classList.add("hidden");
+cancelBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    form.classList.add("hidden");
+    overlay.classList.add("hidden");
+  });
 });
 
 overlay.addEventListener("click", function () {
   form.classList.add("hidden");
 });
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
+  if (caseFormError) caseFormError.classList.add("hidden");
+  if (caseFormSuccess) caseFormSuccess.classList.add("hidden");
 
-  const caseTitle = document.getElementById("case").value;
-  const clientName = document.getElementById("client").value;
-  const hearingDate = document.getElementById("date").value;
+  const title = document.getElementById("case-title").value.trim();
+  const description = document.getElementById("case-description").value.trim();
+  const clientId = document.getElementById("case-client-id").value.trim();
   const caseType = document.getElementById("case-type").value;
-  const assignedLawyer = document.getElementById("assign-lawyer").value;
-  const filedDate = document.getElementById("filed").value;
+  const status = document.getElementById("case-status").value;
+  const lawyerId = document.getElementById("case-lawyer-id").value.trim();
+  const filedDate = document.getElementById("case-filed-date").value;
 
-  const collectData = {
-    case: caseTitle,
-    client: clientName,
-    date: hearingDate,
-    type: caseType,
-    lawyer: assignedLawyer,
-    filed: filedDate,
+  if (!title || !clientId || !caseType || !status || !filedDate) {
+    if (caseFormError) {
+      caseFormError.textContent = "Please fill in all required fields.";
+      caseFormError.classList.remove("hidden");
+    }
+    return;
+  }
+
+  const body = {
+    title,
+    case_type: caseType,
+    client_id: clientId,
+    status,
+    filed_date: filedDate,
   };
+  if (description) body.description = description;
+  if (lawyerId) body.lawyer_id = lawyerId;
 
-  data.push(collectData);
-  localStorage.setItem("storedData", JSON.stringify(data));
+  const submitButton = form.querySelector(".add-case");
+  submitButton.disabled = true;
+  submitButton.textContent = "Creating...";
 
-  form.reset();
-  form.classList.add("hidden");
-  overlay.classList.add("hidden");
-  mapCases();
-  mapHearing();
-  mapLawyer();
+  try {
+    const headers = { "Content-Type": "application/json" };
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+
+    const response = await fetch(`${DASHBOARD_API_BASE}/cases`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      if (caseFormError) {
+        caseFormError.textContent =
+          result.message || "Failed to create case. Please try again.";
+        caseFormError.classList.remove("hidden");
+      }
+      return;
+    }
+
+    if (caseFormSuccess) {
+      caseFormSuccess.textContent = "Case created successfully!";
+      caseFormSuccess.classList.remove("hidden");
+    }
+
+    form.reset();
+    // Refresh cases table and dashboard stats
+    fetchCases();
+    fetchRecentCases();
+    fetchDashboardStats();
+
+    setTimeout(() => {
+      form.classList.add("hidden");
+      overlay.classList.add("hidden");
+      if (caseFormSuccess) caseFormSuccess.classList.add("hidden");
+    }, 1200);
+  } catch (error) {
+    console.error("Create case error:", error);
+    if (caseFormError) {
+      caseFormError.textContent =
+        "Network error. Please check your connection and try again.";
+      caseFormError.classList.remove("hidden");
+    }
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Create Case";
+  }
 });
