@@ -106,7 +106,7 @@ body{
 
 .hearing-table .badge-red {
     display: inline-block;
-    width: 10rem;
+    width: fit-content;
     padding: 1rem 2.1rem;
     border-radius: 12px;
     font-size: 1.5rem;
@@ -114,9 +114,19 @@ body{
     background-color: rgba(47, 49, 57, 1);
 }
 
+.hearing-table .badge-gray {
+    display: inline-block;
+    width: fit-content;
+    padding: 1rem 2.1rem;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: grey;
+    background-color: rgba(47, 49, 57, 1);
+}
+
 .hearing-table .badge-blue {
     display: inline-block;
-    width: 10rem;
+    width: fit-content;
     padding: 1rem 2.1rem;
     border-radius: 12px;
     font-size: 1.5rem;

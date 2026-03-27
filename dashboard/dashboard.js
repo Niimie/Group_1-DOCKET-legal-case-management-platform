@@ -1,4 +1,10 @@
+const navItems = document.querySelectorAll(".lists");
+const sections = document.querySelectorAll(".direct");
+const caseLink = document.querySelector(".case-link");
 const data = JSON.parse(localStorage.getItem("storedData")) || [];
+let allLawyers = [];
+let allCases = [];
+
 const DASHBOARD_API_BASE =
   "https://docket-backend-tcg1cp-production.up.railway.app/api";
 const authToken = localStorage.getItem("docketToken");
@@ -14,6 +20,71 @@ function setStatsLoading(isLoading) {
     caseCardsContainer.classList.toggle("is-loading", isLoading);
   }
 }
+
+///HEADERS
+const navHeader = document.querySelector(".nav-header");
+
+function checkHeader() {
+  if (navHeader) {
+    if(sections[0].classList.contains("visible")){
+    const userData = JSON.parse(localStorage.getItem("docketUser")) || {};
+    navHeader.innerHTML = `
+    <h3>Dashboard</h3>
+    <p>Welcome, ${userData.full_name || "User"}!</p>`;
+  }
+
+  if(sections[1].classList.contains("visible")){ 
+    navHeader.innerHTML = `
+    <h3>Cases</h3>
+    <p>Manage your cases effectively.</p>`;
+  }
+  
+  if(sections[2].classList.contains("visible")){
+    navHeader.innerHTML = `
+    <h3>Clients</h3>
+    <p>View and manage your clients.</p>`;
+  }
+  
+    if(sections[3].classList.contains("visible")){
+      navHeader.innerHTML = `
+      <h3>Lawyers</h3>
+      <p>View and manage your lawyers.</p>`;
+    }
+
+    if(sections[4].classList.contains("visible")){
+      navHeader.innerHTML = `
+      <h3>Hearings</h3>
+      <p>View and manage upcoming hearings.</p>`;
+    }
+
+    if(sections[5].classList.contains("visible")){
+      navHeader.innerHTML = `
+      <h3>Settings</h3>
+      <p>Manage your account settings.</p>`;
+    }
+
+    if(sections[6].classList.contains("visible")){
+      navHeader.innerHTML = `
+      <h3>Profile</h3>
+      <p>View and edit your profile information.</p>`;
+    }
+}
+}
+
+checkHeader();
+
+caseLink.addEventListener("click", function () {
+  sections.forEach((section) => {
+    section.classList.remove("visible");
+  });
+  sections[1].classList.add("visible");
+  navItems.forEach((item) => {
+    item.classList.remove("nav-list");
+  });
+  navItems[1].classList.add("nav-list");
+  checkHeader();
+})
+
 
 function getTopCategory(categoryMap) {
   if (!categoryMap) return ["N/A", 0];
@@ -120,8 +191,8 @@ function renderRecentCases(cases) {
     .map((c) => {
       const statusCls = STATUS_CLASS_MAP[c.status] || "ba";
       return `
-        <tr>
-          <td>
+      <tr>
+      <td>
             <p class="case-id">${c.id}</p>
             <p class="case-title">${c.title}</p>
             <p class="case-type">${c.case_type}</p>
@@ -187,6 +258,14 @@ function getDaysUntil(dateStr) {
   return `${diff}d`;
 }
 
+  const toTitleCase = (str) => {
+    if (!str) return "";
+    return str.toLowerCase()
+              .split('_') // Handles your "senior_partner" underscores
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ');
+};
+
 function getDaysColor(dateStr) {
   const hearing = new Date(dateStr);
   const today = new Date();
@@ -196,6 +275,18 @@ function getDaysColor(dateStr) {
   if (diff <= 3) return "#ff7800";
   if (diff <= 7) return "#c9a84c";
   return "#42ade2";
+}
+
+function getHearingColor(dateStr) {
+  const hearing = new Date(dateStr);
+  const today = new Date();
+  hearing.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+  const diff = Math.ceil((hearing - today) / (1000 * 60 * 60 * 24));
+  if(diff <= 0) return "gray";
+  if (diff <= 5) return "red";
+  if (diff > 6) return "blue";
+  // return "#42ade2";
 }
 
 function renderUpcomingHearings(hearings) {
@@ -214,24 +305,24 @@ function renderUpcomingHearings(hearings) {
       const title = h.case?.title || "—";
       const lawyer = h.scheduledBy?.full_name || "—";
       const notes = h.notes || "";
-
+      
       return `
-        <div class="hearings">
-          <div class="hearing-db">
-            <p class="hearing-day">${day}</p>
-            <p class="hearing-month">${month}</p>
-          </div>
-          <div class="hearing-info">
-            <p class="hearing-title">${title}</p>
-            <p class="hearing-sub">${lawyer} — ${notes}</p>
-          </div>
-          <div class="hdays">
+      <div class="hearings">
+      <div class="hearing-db">
+      <p class="hearing-day">${day}</p>
+      <p class="hearing-month">${month}</p>
+      </div>
+      <div class="hearing-info">
+      <p class="hearing-title">${title}</p>
+      <p class="hearing-sub">${lawyer} — ${notes}</p>
+      </div>
+      <div class="hdays">
             <p style="color: ${daysColor}">${daysLabel}</p>
           </div>
         </div>`;
     })
     .join("");
-}
+  }
 
 function setHearingsLoading(isLoading) {
   const loader = document.getElementById("hearings-loading");
@@ -251,7 +342,7 @@ async function fetchUpcomingHearings() {
       { method: "GET", headers },
     );
     const result = await response.json();
-
+    
     if (!response.ok || !result.success) {
       console.error(
         "Unable to fetch upcoming hearings:",
@@ -271,7 +362,7 @@ async function fetchUpcomingHearings() {
 // Clients Table
 function getInitials(name) {
   return name
-    .split(" ")
+  .split(" ")
     .map((w) => w.charAt(0).toUpperCase())
     .slice(0, 2)
     .join("");
@@ -283,7 +374,7 @@ function renderClientsTable(clients, count) {
 
   const table = document.querySelector(".client-table");
   if (!table) return;
-
+  
   // Ensure we have a tbody to target
   let tbody = table.querySelector("tbody");
   if (!tbody) {
@@ -291,7 +382,7 @@ function renderClientsTable(clients, count) {
     tbody = document.createElement("tbody");
     table.appendChild(tbody);
   }
-
+  
   tbody.innerHTML = clients
     .map((c) => {
       const initials = getInitials(c.full_name);
@@ -318,7 +409,7 @@ async function fetchClients() {
       headers,
     });
     const result = await response.json();
-
+    
     if (!response.ok || !result.success) {
       console.error(
         "Unable to fetch clients:",
@@ -345,23 +436,23 @@ const CASES_STATUS_MAP = {
 function renderCasesTable(cases) {
   const tbody = document.querySelector(".cases-table tbody");
   if (!tbody) return;
-
+  
   tbody.innerHTML = cases
     .map((c) => {
       const s = CASES_STATUS_MAP[c.status] || CASES_STATUS_MAP.Active;
       return `
-        <tr>
-          <td>${c.id}</td>
+      <tr>
+      <td>${c.id}</td>
           <td>
             <div>
-              <h4>${c.title}</h4>
-              <p>${c.case_type}</p>
+            <h4>${c.title}</h4>
+            <p>${c.case_type}</p>
             </div>
-          </td>
+            </td>
           <td>${c.client?.full_name || "\u2014"}</td>
           <td>\u2014</td>
           <td>
-            <button class="${s.cls}"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+          <button class="${s.cls}"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
@@ -371,7 +462,7 @@ function renderCasesTable(cases) {
           </td>
           <td>${formatDate(c.filed_date)}</td>
           <td>${formatDate(c.filed_date)}</td>
-        </tr>`;
+          </tr>`;
     })
     .join("");
 }
@@ -395,11 +486,149 @@ async function fetchCases() {
       return;
     }
 
-    renderCasesTable(result.data || []);
+    allCases = result.data || [];
+
+    renderCasesTable(allCases);
   } catch (error) {
     console.error("Cases fetch error:", error);
   }
 }
+
+const caseSearchInput = document.getElementById("case-search");
+function searchCases() {
+  const query = caseSearchInput.value.toLowerCase();
+  const tbody = document.querySelector(".cases-table tbody");
+  if (!tbody) return;
+  const filtered = allCases.filter((c) => (c.client?.full_name?.toLowerCase().includes(query) || "") || ( c.id.toString().includes(query) || "") || (c.title.toLowerCase().includes(query) || ""));
+
+  renderCasesTable(filtered);
+}
+
+caseSearchInput.addEventListener("input", searchCases);
+
+async function fetchHearing() {
+  try {
+    const headers = { "Content-Type": "application/json" };
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+
+    const response = await fetch(`${DASHBOARD_API_BASE}/hearings`, {
+      method: "GET",
+      headers,
+    });
+    const result = await response.json();
+    
+    if (!response.ok || !result.success) {
+      console.error(
+        "Unable to fetch hearings:",
+        result.message || "Request failed",
+      );
+      return;
+    }
+    
+    renderHearings(result.data || []);
+  } catch (error) {
+    console.error("Hearings fetch error:", error);
+  }
+}
+
+function renderHearings(hearings) {
+  const list = document.querySelector(".hearing-table tbody");
+  if (!list) return;
+  const s = CASES_STATUS_MAP[hearings.status] || "active";
+
+  list.innerHTML = hearings.map((h) => {
+    return `
+    <td class="hearing-flex">
+                  <p class="slt">${(h.case_id)}</p>
+                  <P class="V">${h.title || "\u2014"}</P>
+                </td>
+                <td>${h.client?.full_name || "\u2014"}</td>
+                <td>${h.lawyer?.full_name || "\u2014"}</td>
+                <td>${h.outcome || formatDate(h.hearing_date) || "\u2014"}</td>
+                <td><span class="badge-${getHearingColor(h.hearing_date)}">${getDaysUntil(h.hearing_date) || "\u2014"} days</span></td>
+                <td><span class="badge-${s}"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="4" cy="4" r="4" fill="#F7060A" />
+                      </svg>
+                    &nbsp;${h.urgency || "\u2014"}</span></td>
+              </tr>
+`
+
+}).join("");
+}
+
+async function fetchLawyers() {
+  try {
+    const headers = { "Content-Type": "application/json" };
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+
+    const response = await fetch(`${DASHBOARD_API_BASE}/lawyers`, {
+      method: "GET",
+      headers,
+    });
+    const result = await response.json();
+    
+    if (!response.ok || !result.success) {
+      console.error(
+        "Unable to fetch lawyers:",
+        result.message || "Request failed",
+      );
+      return;
+    }
+    
+    allLawyers = result.data || [];
+
+    renderLawyers(allLawyers);
+  } catch (error) {
+    console.error("Lawyers fetch error:", error);
+  }
+}
+
+function renderLawyers(lawyers) {
+  const lawyer = document.querySelector(".section");
+  if (!lawyer) return;
+  const filterByRole = lawyers.filter((lawyer) => lawyer.role === "associate");
+  lawyer.innerHTML = filterByRole
+    .map((l) => {
+      const initials = getInitials(l.full_name);
+      const active = l.is_active ? "Active" : "Inactive"; 
+      return `
+      <div class="lawyer-container">
+        <div class="lawyer-initials">${initials}</div>
+          <h2 class="lawyer-name">${l.full_name || "\u2014"}</h2>
+          <p class="lawyer-case">${l.specialization || "\u2014"}</p>
+          <p class="active-number">${l.role ? toTitleCase(l.role) : "\u2014"}</p>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+
+  const searchInput = document.getElementById("search");
+  function searchLawyers() {
+    const query = searchInput.value.toLowerCase();
+    const lawyer = document.querySelector(".section");
+    if (!lawyer) return;
+    const filtered = allLawyers.filter((l) =>
+      l.full_name.toLowerCase().includes(query) && l.role === "associate"
+    );
+
+    renderLawyers(filtered)
+  }
+  
+  searchInput.addEventListener("input", searchLawyers);
+
+fetchLawyers();
+//// tabs
+
+const tabs = document.querySelectorAll(".tabs");
+tabs.forEach((tab) => { 
+  tab.addEventListener("click", function () {
+  tabs.forEach((t) => t.classList.remove("active-tab"));
+  tab.classList.add("active-tab");
+  });
+  }); 
 
 // toggle sidebar//
 const toggleBtns = document.querySelectorAll(".toggle-btn");
@@ -437,40 +666,7 @@ statusBadges.forEach((badge) => {
   });
 });
 
-function mapCases() {
-  const casesTable = document.querySelector(".cases-table tbody");
 
-  casesTable.innerHTML = data
-    .map((caseData) => {
-      return `
-        <tr>
-                    <td>SLT-${(data.indexOf(caseData) + 1).toString().padStart(3, "0")}</td>
-                    <td>
-                      <div>
-                        <h4>${caseData.case}</h4>
-                          <p>Civic Litigation</p>
-                      </div>
-                    </td>
-                    <td>${caseData.client}</td>
-                    <td>${caseData.lawyer}</td>
-                    <td>
-                      <button class="case-active"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M5 10C6.32608 10 7.59785 9.47322 8.53553 8.53553C9.47322 7.59785 10 6.32608 10 5C10 3.67392 9.47322 2.40215 8.53553 1.46447C7.59785 0.526784 6.32608 0 5 0C3.67392 0 2.40215 0.526784 1.46447 1.46447C0.526784 2.40215 0 3.67392 0 5C0 6.32608 0.526784 7.59785 1.46447 8.53553C2.40215 9.47322 3.67392 10 5 10Z"
-                            fill="#34C759" />
-                        </svg> &nbsp;Active
-                      </button>
-                    </td>
-                    <td>${caseData.date}</td>
-                    <td>${caseData.filed}</td>
-                  </tr>
-        `;
-    })
-    .join("");
-}
-
-mapCases();
 
 function getDate(date) {
   const userDate = new Date(date);
@@ -491,62 +687,15 @@ function getDate(date) {
 }
 
 getDate(data.map((caseData) => caseData.date));
-
-function mapHearing() {
-  const hearingTable = document.querySelector(".hearing-table tbody");
-
-  hearingTable.innerHTML = data
-    .map((caseData) => {
-      return `
-        <tr>
-                <td class="hearing-flex">
-                  <p class="slt">SLT-${(data.indexOf(caseData) + 1).toString().padStart(3, "0")}</p>
-                  <P class="V">${caseData.case}</P>
-                </td>
-                <td>${caseData.client}</td>
-                <td>${caseData.lawyer}</td>
-                <td>${caseData.date}</td>
-                <td><span class="badge-blue">${getDate(caseData.date)} days</span></td>
-                <td><span class="badge-active"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="4" cy="4" r="4" fill="#34C759" />
-                    </svg>
-                    &nbsp;Active</span></td>
-              </tr>
-    `;
-    })
-    .join("");
-}
-
-mapHearing();
-
-function mapLawyer() {
-  const lawyer = document.querySelector(".section");
-  lawyer.innerHTML = data.map((caseData) => {
-    return `
-        <div class="lawyer-container">
-            <h2 class="lawyer-initials">${caseData.lawyer
-              .split(" ")
-              .map((word) => word.charAt(0).toUpperCase())
-              .join("")}</h2>
-            <h2 class="lawyer-name">${caseData.lawyer}</h2>
-            <p class="lawyer-case">${caseData.type}</p>
-            <p class="active-number">Active Case: 1</p>
-          </div>
-    `;
-  });
-}
-
-mapLawyer();
 fetchDashboardStats();
 fetchRecentCases();
 fetchUpcomingHearings();
 fetchCases();
 fetchClients();
+fetchHearing();
 
 //Nav section showing
-const navItems = document.querySelectorAll(".lists");
-const sections = document.querySelectorAll(".direct");
+
 
 navItems.forEach((navItem, i) => {
   navItem.addEventListener("click", function () {
@@ -558,7 +707,9 @@ navItems.forEach((navItem, i) => {
       section.classList.remove("visible");
     });
     sections[i].classList.add("visible");
+    checkHeader();
   });
+
 });
 
 const navBtn = document.querySelector(".btn_1");
@@ -650,6 +801,9 @@ form.addEventListener("submit", async function (e) {
     fetchCases();
     fetchRecentCases();
     fetchDashboardStats();
+    fetchHearing();
+    fetchUpcomingHearings();
+    fetchLawyers();
 
     setTimeout(() => {
       form.classList.add("hidden");

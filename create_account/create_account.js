@@ -218,6 +218,7 @@ form.addEventListener("submit", function (e) {
 
   setFormStatus("loading", "Creating your account. Please wait...", true);
   createUser(collectedData);
+  localStorage.setItem("docketUser", collectedData.full_name);
 });
 
 async function createUser(userData) {
